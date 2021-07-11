@@ -1,7 +1,6 @@
 package edu.anderson.zaharov.collection;
 
-
-import by.edu.clevertec.exceptions.CustomArrayException;
+import edu.anderson.zaharov.exception.CustomArrayException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
@@ -16,8 +15,8 @@ import java.util.function.UnaryOperator;
 public class CustomArrayList<E> implements List<E> {
 
     private Object[] items;
-    private int size;
 
+    private int size;
 
     public CustomArrayList() {
         items = new Object[]{};
@@ -31,6 +30,7 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public boolean add(E e) {
+
         Object[] n = new Object[size + 1];
         System.arraycopy(items, 0, n, 0, size);
         n[size++] = e;
@@ -55,7 +55,7 @@ public class CustomArrayList<E> implements List<E> {
             n[index] = element;
             items = n;
         } catch (CustomArrayException e) {
-            log.error(e.getMessage());
+            log.error("Method add {}", e.getMessage());
         }
     }
 
@@ -243,7 +243,7 @@ public class CustomArrayList<E> implements List<E> {
      * @return - deleted object
      */
     @Override
-    public E remove(int index)  {
+    public E remove(int index) {
         Object o = items[index];
         try {
             checkSize(index);
@@ -377,6 +377,7 @@ public class CustomArrayList<E> implements List<E> {
      * @param index - index for checking
      */
     private void checkSize(int index) throws CustomArrayException {
+
         if (index >= size) {
             throw new CustomArrayException("OutOfRange");
         }
