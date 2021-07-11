@@ -1,6 +1,7 @@
 package edu.anderson.zaharov.collection;
 
 import edu.anderson.zaharov.exception.CustomArrayException;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
@@ -12,6 +13,7 @@ import java.util.function.UnaryOperator;
  * @param <E>
  */
 @Slf4j
+@ToString
 public class CustomArrayList<E> implements List<E> {
 
     private Object[] items;
@@ -68,9 +70,10 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public boolean addAll(Collection<? extends E> c) {
+
         Object[] arr = c.toArray();
-        for (int i = 0; i < arr.length; i++) {
-            add((E) arr[i]);
+        for (Object o : arr) {
+            add((E) o);
         }
         return true;
     }
