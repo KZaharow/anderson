@@ -2,8 +2,11 @@ package edu.anderson.zaharov;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NullPointerException {
 
-        System.out.println("Hello java!");
+        try {
+            throw new NullPointerException();
+        } catch (Error e){
+        }
     }
 }
