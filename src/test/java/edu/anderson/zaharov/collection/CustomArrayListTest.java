@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -126,7 +127,7 @@ class CustomArrayListTest {
    }
 
     @Test
-    void getElementByIndex(){
+    void testGetElementByIndex(){
 
         int index = 0;
         String e = cl.get(index);
@@ -135,10 +136,85 @@ class CustomArrayListTest {
     }
 
     @Test
-    void getUnExistElementByIndex(){
+    void testGetUnExistElementByIndex(){
 
         int index = 10;
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.get(10));
         log.info("getElementByIndex {}, index = {}, element = non exist", cl, index);
     }
+
+    @Test
+    void testIsEmpty(){
+
+        boolean r = cl.isEmpty();
+        assertFalse(r);
+        log.info("testIsEmpty {}", r);
+    }
+
+    @Test
+    void testIndexOf(){
+
+        String e = "one";
+        int index = cl.indexOf(e);
+        assertEquals(0, index);
+        log.info("testIndexOf {}, indexOf = {}, element = {}", cl, index, e);
+    }
+
+    @Test
+    void testUnExistIndexOf() {
+
+        String e = "three";
+        int index = cl.indexOf(e);
+        assertEquals(-1, index);
+        log.info("testIndexOf {}, indexOf = {}, element = {}", cl, index, e);
+    }
+
+    @Test
+    void testReturnIterator(){
+
+        boolean r = cl.iterator() instanceof Iterator;
+        assertTrue(r);
+        log.info("testReturnIterator {}", r);
+    }
+
+    @Test
+    void testReturnLastIndexOf(){
+
+        String e = "one";
+        int index = cl.lastIndexOf(e);
+        assertEquals(0, index);
+        log.info("testReturnLastIndexOf {}, indexOf = {}, element = {}", cl, index, e);
+    }
+
+    @Test
+    void testReturnLastUnExistedIndexOf(){
+
+        String e = "three";
+        int index = cl.lastIndexOf(e);
+        assertEquals(-1, index);
+        log.info("testReturnLastIndexOf {}, indexOf = {}, element = {}", cl, index, e);
+    }
+
+    @Test
+    void testRemoveByIndex(){
+
+        int size = cl.size();
+        int index = 0;
+        String e = cl.remove(index);
+        assertEquals("one", e);
+        log.info("testRemoveByIndex {}, i={}, e={}, size_b={}, size_a={}", cl, index, e, size, cl.size());
+    }
+
+    @Test
+    void testRemoveByUnExistedIndex(){
+
+        int index = 10;
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.get(10));
+        log.info("getElementByIndex {}, index = {}, element = non exist", cl, index);
+    }
+
+
+
+
+
 }

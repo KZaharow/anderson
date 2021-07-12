@@ -181,6 +181,7 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public int indexOf(Object o) {
+
         if (o == null) {
             for (int i = 0; i < size; i++)
                 if (items[i] == null)
