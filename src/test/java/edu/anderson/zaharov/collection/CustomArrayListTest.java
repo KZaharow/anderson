@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @ToString
@@ -113,9 +112,33 @@ class CustomArrayListTest {
     void testContainElement() {
 
         boolean r = cl.contains("one");
-        log.info("testContainElement {}", r);
         assertTrue(r);
+        log.info("testContainElement {}", r);
     }
 
+   @Test
+    void testClearAllElements(){
 
+       int size = cl.size();
+       cl.clear();
+       assertEquals(0, cl.size());
+       log.info("testClearAllElements {}, size before={}, size after={}", cl, size, cl.size());
+   }
+
+    @Test
+    void getElementByIndex(){
+
+        int index = 0;
+        String e = cl.get(index);
+        assertEquals("one", e);
+        log.info("getElementByIndex {}, index = {}, element = {}", cl, index, e);
+    }
+
+    @Test
+    void getUnExistElementByIndex(){
+
+        int index = 10;
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.get(10));
+        log.info("getElementByIndex {}, index = {}, element = non exist", cl, index);
+    }
 }

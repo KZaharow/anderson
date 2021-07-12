@@ -156,6 +156,7 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public E get(int index) {
+
         try {
             checkSize(index);
         } catch (CustomArrayException e) {
