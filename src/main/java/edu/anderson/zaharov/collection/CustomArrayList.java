@@ -141,6 +141,7 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public void clear() {
+
         for (int i = 0; i < size; i++) {
             items[i] = null;
         }

@@ -39,7 +39,7 @@ class CustomArrayListTest {
         int size = cl.size();
         cl.add("three");
         assertEquals(3, cl.size());
-        log.info("addOneTestNewElement {}, size before={}, size after={}", cl, size, cl.size());
+        log.info("testAddOneNewElement {}, size before={}, size after={}", cl, size, cl.size());
     }
 
     @Test
@@ -48,7 +48,7 @@ class CustomArrayListTest {
         int size = cl.size();
         cl.add(null);
         assertEquals(3, cl.size());
-        log.info("addOneNewNullElement {}, size before={}, size after={}", cl, size, cl.size());
+        log.info("testAddOneNewNullElement {}, size before={}, size after={}", cl, size, cl.size());
     }
 
     @Test
@@ -56,7 +56,7 @@ class CustomArrayListTest {
 
         int size = cl.size();
         boolean r = cl.add("three");
-        log.info("addOneNewElementCheckResult {}, size before={}, size after={}", r, size, cl.size());
+        log.info("testAddOneNewElementCheckResult {}, size before={}, size after={}", r, size, cl.size());
         assertTrue(r);
     }
 
@@ -64,7 +64,7 @@ class CustomArrayListTest {
     void testInsertOneElementInTheCollectionBegin() {
 
         cl.add(0, "insert");
-        log.info("insertOneElementInTheCollectionBegin {}", cl.toString());
+        log.info("testInsertOneElementInTheCollectionBegin {}", cl.toString());
         assertEquals(3, cl.size());
     }
 
@@ -72,7 +72,7 @@ class CustomArrayListTest {
     void testInsertOneElementInTheCollectionCenter() {
 
         cl.add(1, "insert");
-        log.info("insertOneElementInTheCollectionCenter {}", cl.toString());
+        log.info("testInsertOneElementInTheCollectionCenter {}", cl.toString());
         assertEquals(3, cl.size());
     }
 
@@ -80,10 +80,10 @@ class CustomArrayListTest {
     void testInsertAllElementsFromCollection() {
 
         CustomArrayList<String> nl = new CustomArrayList<>();
-        cl.add("one");
-        cl.add("two");
+        nl.add("one");
+        nl.add("two");
         cl.addAll(nl);
-        log.info("insertAllElements {}", cl.toString());
+        log.info("testInsertAllElementsFromCollection {}", cl.toString());
         assertEquals(4, cl.size());
     }
 
@@ -91,11 +91,31 @@ class CustomArrayListTest {
     void testInsertAllElementsAtTheSpecifiedIndex() {
 
         CustomArrayList<String> nl = new CustomArrayList<>();
-        cl.add("one");
-        cl.add("two");
+        nl.add("one");
+        nl.add("two");
         cl.addAll(1, nl);
-        log.info("insertAllElementsAtTheSpecifiedIndex {}", cl.toString());
+        log.info("testInsertAllElementsAtTheSpecifiedIndex {}", cl.toString());
         assertEquals(4, cl.size());
     }
+
+    @Test
+    void testContainsAll() {
+
+        CustomArrayList<String> nl = new CustomArrayList<>();
+        nl.add("one");
+        nl.add("two");
+        boolean r = cl.containsAll(nl);
+        log.info("testContainsAll {}", r);
+        assertTrue(r);
+    }
+
+    @Test
+    void testContainElement() {
+
+        boolean r = cl.contains("one");
+        log.info("testContainElement {}", r);
+        assertTrue(r);
+    }
+
 
 }
