@@ -272,6 +272,7 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public boolean remove(Object o) {
+
         if (o == null) {
             for (int index = 0; index < size; index++)
                 if (items[index] == null) {
@@ -345,11 +346,19 @@ public class CustomArrayList<E> implements List<E> {
      */
     @Override
     public Object[] toArray() {
+
         return Arrays.copyOf(items, size);
     }
 
+    /**
+     *
+     * @param a
+     * @param <T>
+     * @return
+     */
     @Override
     public <T> T[] toArray(T[] a) {
+
         return null;
     }
 

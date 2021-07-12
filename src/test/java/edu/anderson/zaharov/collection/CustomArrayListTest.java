@@ -5,8 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -117,17 +119,17 @@ class CustomArrayListTest {
         log.info("testContainElement {}", r);
     }
 
-   @Test
-    void testClearAllElements(){
+    @Test
+    void testClearAllElements() {
 
-       int size = cl.size();
-       cl.clear();
-       assertEquals(0, cl.size());
-       log.info("testClearAllElements {}, size before={}, size after={}", cl, size, cl.size());
-   }
+        int size = cl.size();
+        cl.clear();
+        assertEquals(0, cl.size());
+        log.info("testClearAllElements {}, size before={}, size after={}", cl, size, cl.size());
+    }
 
     @Test
-    void testGetElementByIndex(){
+    void testGetElementByIndex() {
 
         int index = 0;
         String e = cl.get(index);
@@ -136,15 +138,16 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testGetUnExistElementByIndex(){
+    void testGetUnExistElementByIndex() {
 
+        log.info("testGetUnExistElementByIndex");
         int index = 10;
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.get(10));
-        log.info("getElementByIndex {}, index = {}, element = non exist", cl, index);
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.get(10), "ArrayIndexOutOfBoundsException executed");
+
     }
 
     @Test
-    void testIsEmpty(){
+    void testIsEmpty() {
 
         boolean r = cl.isEmpty();
         assertFalse(r);
@@ -152,7 +155,7 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testIndexOf(){
+    void testIndexOf() {
 
         String e = "one";
         int index = cl.indexOf(e);
@@ -170,7 +173,7 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testReturnIterator(){
+    void testReturnIterator() {
 
         boolean r = cl.iterator() instanceof Iterator;
         assertTrue(r);
@@ -178,7 +181,7 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testReturnLastIndexOf(){
+    void testReturnLastIndexOf() {
 
         String e = "one";
         int index = cl.lastIndexOf(e);
@@ -187,7 +190,7 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testReturnLastUnExistedIndexOf(){
+    void testReturnLastUnExistedIndexOf() {
 
         String e = "three";
         int index = cl.lastIndexOf(e);
@@ -196,7 +199,7 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testRemoveByIndex(){
+    void testRemoveByIndex() {
 
         int size = cl.size();
         int index = 0;
@@ -206,15 +209,99 @@ class CustomArrayListTest {
     }
 
     @Test
-    void testRemoveByUnExistedIndex(){
+    void testRemoveByUnExistedIndex() {
 
         int index = 10;
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.get(10));
         log.info("getElementByIndex {}, index = {}, element = non exist", cl, index);
     }
 
+    @Test
+    void testRemoveByObject() {
 
+        String e = "one";
+        boolean r = cl.remove(e);
+        assertTrue(r);
+        log.info("testRemoveByObject {}, {}, {}", cl, e, r);
+    }
 
+    @Test
+    void testRemoveByUnExistedObject() {
+
+        String e = "three";
+        boolean r = cl.remove(e);
+        assertFalse(r);
+        log.info("testRemoveByObject {}, {}, {}", cl, e, r);
+    }
+
+    @Test
+    void testRemoveAll() {
+
+        String s = cl.toString();
+        CustomArrayList<String> nl = new CustomArrayList<>();
+        nl.add("one");
+        boolean r = cl.removeAll(nl);
+        assertTrue(r);
+        log.info("\n\tMETHOD: removeAll():" +
+                "\n\tFROM {};" +
+                "\n\tby {};" +
+                "\n\tresult {};", s, nl, r);
+    }
+
+    @Test
+    void testSet() {
+        ;
+        String s = cl.toString();
+        String e = cl.set(0, "three");
+        assertEquals(2, cl.size());
+        log.info("\n\tMETHOD: set():" +
+                "\n\tUPD {};" +
+                "\n\tSET {};" +
+                "\n\tUPDATED {};", s, "0 elem to three", e);
+    }
+
+    @Test
+    void testSetUnExistedElement() {
+
+        int index = 10;
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> cl.set(index, "three"));
+    }
+
+    @Test
+    void testSort() {
+
+        CustomArrayList<String> nl = new CustomArrayList<>();
+        nl.add("c");
+        nl.add("b");
+        nl.add("a");
+        String s = nl.toString();
+        nl.sort(String::compareTo);
+        log.info("\n\tMETHOD: sort():" +
+                "\n\tBEFORE {};" +
+                "\n\tAFTER {}", s, nl);
+        assertEquals("a", nl.get(0));
+    }
+
+    @Test
+    void testToArray() {
+
+        Object[] arr = cl.toArray();
+        log.info("\n\tMETHOD: toArray():" +
+                "\n\tBEFORE {};" +
+                "\n\tAFTER {}", cl, arr);
+        assertEquals("one", arr[0]);
+    }
+
+    @Test
+    void testSubList() {
+
+        List<String> strings = cl.subList(0, 1);
+        Object[] arr = cl.toArray();
+        log.info("\n\tMETHOD: toArray():" +
+                "\n\tBEFORE {};" +
+                "\n\tAFTER {}", cl, arr);
+        assertEquals("one", arr[0]);
+    }
 
 
 }
