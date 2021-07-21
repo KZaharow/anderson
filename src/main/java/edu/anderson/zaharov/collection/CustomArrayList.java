@@ -309,6 +309,7 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
+
         try {
             checkSize(index);
         } catch (CustomArrayException e) {

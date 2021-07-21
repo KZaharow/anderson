@@ -252,7 +252,7 @@ class CustomArrayListTest {
         String s = cl.toString();
         String e = cl.set(0, "three");
         assertEquals(2, cl.size());
-        log.info("\n\tMETHOD: set():" +
+        log.("\n\tMETHOD: set():" +
                 "\n\tUPD {};" +
                 "\n\tSET {};" +
                 "\n\tUPDATED {};", s, "0 elem to three", e);
