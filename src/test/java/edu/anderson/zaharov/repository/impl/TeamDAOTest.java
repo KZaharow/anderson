@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.repository.impl;
 
 import edu.anderson.zaharov.connector.PoolConnector;
-import edu.anderson.zaharov.entity.Project;
+import edu.anderson.zaharov.entity.Team;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.junit.jupiter.api.*;
@@ -44,7 +44,7 @@ class TeamDAOTest {
     void save() {
 
         log.info("*** Test save DAO *** ---> START");
-        Project team = new Project();
+        Team team = new Team();
         team.setTeamNameId(3L);
         team.setEmployerId(3L);
         TeamDAO teamDAO = new TeamDAO();
@@ -76,7 +76,7 @@ class TeamDAOTest {
     void update() {
 
         log.info("*** Test update DAO *** ---> START");
-        Project team = new Project();
+        Team team = new Team();
         team.setId(3L);
         team.setEmployerId(4L);
         try {
