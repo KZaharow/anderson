@@ -55,11 +55,8 @@ public class PoolConnector {
             dataSource.setPassword(pass);
 
             Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", pass);
             properties.setProperty("useUnicode", "true");
             properties.setProperty("characterEncoding", "UTF8");
-            dataSource.setProperties(properties);
 
             dataSource.setMaxStatements(180);
             dataSource.setMaxStatementsPerConnection(180);
