@@ -16,6 +16,7 @@ public class FeedBackDAOimpl implements EntityService<FeedBack> {
 
     private long id;
 
+    // service
     @Override
     public long save(FeedBack item) {
 
