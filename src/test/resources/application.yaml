@@ -1,4 +1,4 @@
 user: "user"
-url: "jdbc:h2:~/test"
+url: "jdbc:h2:C:/Users/zaharov/my"
 password: "user"
 driver: "org.h2.Driver"

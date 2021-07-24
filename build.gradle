@@ -27,6 +27,9 @@ dependencies {
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
     // https://mvnrepository.com/artifact/com.h2database/h2
     testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis
+    implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.6'
+
 
 
 }

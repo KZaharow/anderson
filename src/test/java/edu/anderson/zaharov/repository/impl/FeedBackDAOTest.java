@@ -2,6 +2,7 @@ package edu.anderson.zaharov.repository.impl;
 
 import edu.anderson.zaharov.entity.FeedBack;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -13,7 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 class FeedBackDAOTest {
 
+
     @Test
+    @Order(1)
     void save() {
 
         FeedBack feedBack = new FeedBack();
@@ -30,6 +33,7 @@ class FeedBackDAOTest {
     }
 
     @Test
+    @Order(2)
     void get() {
 
         try {
