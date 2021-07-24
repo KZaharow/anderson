@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.repository.impl;
 
 import edu.anderson.zaharov.connector.PoolConnector;
-import edu.anderson.zaharov.entity.FeedBack;
+import edu.anderson.zaharov.entity.TeamName;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.junit.jupiter.api.*;
@@ -12,14 +12,13 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class FeedBackDAOTest {
+class TeamNameDAOTest {
 
     @BeforeAll
     static void init() {
@@ -45,13 +44,12 @@ class FeedBackDAOTest {
     void save() {
 
         log.info("*** Test save DAO *** ---> START");
-        FeedBack feedBack = new FeedBack();
-        feedBack.setText("test");
-        feedBack.setDate(new Date());
-        FeedBackDAO feedBackDAO = new FeedBackDAO();
+        TeamName teamName = new TeamName();
+        teamName.setName("test");
+        TeamNameDAO teamNameDAO = new TeamNameDAO();
         try {
-            Long id1 = feedBackDAO.save(feedBack);
-            Long id2 = feedBackDAO.save(feedBack);
+            Long id1 = teamNameDAO.save(teamName);
+            Long id2 = teamNameDAO.save(teamName);
             assertEquals(1, id2 - id1);
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -65,8 +63,8 @@ class FeedBackDAOTest {
 
         log.info("*** Test get DAO *** ---> START");
         try {
-            assertEquals("test", new FeedBackDAO().get(3L).getText());
-            assertEquals("test", new FeedBackDAO().get(4L).getText());
+            assertEquals("test", new TeamNameDAO().get(3L).getName());
+            assertEquals("test", new TeamNameDAO().get(4L).getName());
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -78,12 +76,11 @@ class FeedBackDAOTest {
     void update() {
 
         log.info("*** Test update DAO *** ---> START");
-        FeedBack feedBack = new FeedBack();
-        feedBack.setId(3L);
-        feedBack.setText("upd");
-        feedBack.setDate(new Date());
+        TeamName teamName = new TeamName();
+        teamName.setId(3L);
+        teamName.setName("upd");
         try {
-            long id = new FeedBackDAO().update(feedBack);
+            long id = new TeamNameDAO().update(teamName);
             assertEquals(3, id);
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -97,7 +94,7 @@ class FeedBackDAOTest {
 
         log.info("*** Test delete DAO *** ---> START");
         try {
-            new FeedBackDAO().delete(5L);
+            new TeamNameDAO().delete(5L);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
