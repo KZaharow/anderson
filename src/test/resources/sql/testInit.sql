@@ -66,7 +66,7 @@ CREATE TABLE team_name
 ALTER TABLE employer ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project(id);
 ALTER TABLE employer ADD CONSTRAINT employer_feedback_id_fk FOREIGN KEY (feedback_id) REFERENCES feedback(id);
 ALTER TABLE project ADD CONSTRAINT project_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id);
-ALTER TABLE team ADD CONSTRAINT team_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id);
+ALTER TABLE team ADD CONSTRAINT team_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id) ;
 ALTER TABLE team ADD CONSTRAINT team_employer_id_fk FOREIGN KEY (employer_id) REFERENCES employer(id);
 
 INSERT INTO team_name (id, name)

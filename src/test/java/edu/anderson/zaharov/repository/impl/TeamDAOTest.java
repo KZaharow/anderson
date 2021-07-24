@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.repository.impl;
 
 import edu.anderson.zaharov.connector.PoolConnector;
-import edu.anderson.zaharov.entity.FeedBack;
+import edu.anderson.zaharov.entity.Project;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.junit.jupiter.api.*;
@@ -12,14 +12,13 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class FeedBackDAOTest {
+class TeamDAOTest {
 
     @BeforeAll
     static void init() {
@@ -45,13 +44,13 @@ class FeedBackDAOTest {
     void save() {
 
         log.info("*** Test save DAO *** ---> START");
-        FeedBack feedBack = new FeedBack();
-        feedBack.setText("test");
-        feedBack.setDate(new Date());
-        FeedBackDAO feedBackDAO = new FeedBackDAO();
+        Project team = new Project();
+        team.setTeamNameId(3L);
+        team.setEmployerId(3L);
+        TeamDAO teamDAO = new TeamDAO();
         try {
-            Long id1 = feedBackDAO.save(feedBack);
-            Long id2 = feedBackDAO.save(feedBack);
+            Long id1 = teamDAO.save(team);
+            Long id2 = teamDAO.save(team);
             assertEquals(1, id2 - id1);
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -65,8 +64,7 @@ class FeedBackDAOTest {
 
         log.info("*** Test get DAO *** ---> START");
         try {
-            assertEquals("test", new FeedBackDAO().get(3L).getText());
-            assertEquals("test", new FeedBackDAO().get(4L).getText());
+            assertEquals(3L, new TeamDAO().get(3L).getTeamNameId());
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -78,12 +76,11 @@ class FeedBackDAOTest {
     void update() {
 
         log.info("*** Test update DAO *** ---> START");
-        FeedBack feedBack = new FeedBack();
-        feedBack.setId(3L);
-        feedBack.setText("upd");
-        feedBack.setDate(new Date());
+        Project team = new Project();
+        team.setId(3L);
+        team.setEmployerId(4L);
         try {
-            long id = new FeedBackDAO().update(feedBack);
+            long id = new TeamDAO().update(team);
             assertEquals(3, id);
         } catch (SQLException e) {
             log.error(e.getMessage());
