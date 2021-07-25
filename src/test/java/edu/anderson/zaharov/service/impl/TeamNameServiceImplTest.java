@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -63,7 +64,7 @@ class TeamNameServiceImplTest {
 
         dao.delete(teamName.getId());
         when(dao.get(teamName.getId())).thenReturn(null);
-        assertEquals(null, dao.get(teamName.getId()));
+        assertNull(dao.get(teamName.getId()));
     }
 }
 

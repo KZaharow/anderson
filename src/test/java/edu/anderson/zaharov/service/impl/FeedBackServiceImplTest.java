@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -65,7 +66,7 @@ class FeedBackServiceImplTest {
 
         dao.delete(feedBack.getId());
         when(dao.get(feedBack.getId())).thenReturn(null);
-        assertEquals(null, dao.get(feedBack.getId()));
+        assertNull(dao.get(feedBack.getId()));
     }
 }
 

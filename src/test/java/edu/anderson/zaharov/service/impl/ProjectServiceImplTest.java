@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -69,7 +70,7 @@ class ProjectServiceImplTest {
 
         dao.delete(project.getId());
         when(dao.get(project.getId())).thenReturn(null);
-        assertEquals(null, dao.get(project.getId()));
+        assertNull(dao.get(project.getId()));
     }
 }
 

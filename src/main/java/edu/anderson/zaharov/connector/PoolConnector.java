@@ -3,17 +3,13 @@ package edu.anderson.zaharov.connector;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import edu.anderson.zaharov.exception.NoSuchYamlFileException;
 import edu.anderson.zaharov.exception.PoolConnectorInitException;
-import edu.anderson.zaharov.exception.ResourceBundleException;
 import edu.anderson.zaharov.yaml.YamlReader;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 @Slf4j
 public class PoolConnector {

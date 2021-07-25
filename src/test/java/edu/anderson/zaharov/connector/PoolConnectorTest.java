@@ -1,5 +1,6 @@
 package edu.anderson.zaharov.connector;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Slf4j
 class PoolConnectorTest {
 
     @DisplayName("Test poolConnector")
@@ -18,6 +20,7 @@ class PoolConnectorTest {
         try (Connection c = pc.getConnection()) {
             assertNotNull(c);
         } catch (SQLException e) {
+            log.error(e.getMessage());
         }
     }
 }
