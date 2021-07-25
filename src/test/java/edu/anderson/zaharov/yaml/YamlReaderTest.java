@@ -24,6 +24,6 @@ class YamlReaderTest {
                 .getResourceAsStream("application.yaml");
         Map<String, Object> obj = yaml.load(inputStream);
         log.info("read yaml data: key{} = {}", key, obj.get(key));
-        assertEquals("postgres", obj.get(key));
+        assertEquals("u", obj.get(key));
     }
 }

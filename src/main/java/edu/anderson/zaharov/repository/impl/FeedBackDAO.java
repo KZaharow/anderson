@@ -3,13 +3,13 @@ package edu.anderson.zaharov.repository.impl;
 import edu.anderson.zaharov.connector.PoolConnector;
 import edu.anderson.zaharov.entity.FeedBack;
 import edu.anderson.zaharov.exception.NoSuchDatabaseElementException;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 
 import java.sql.*;
 import java.util.Date;
 import java.util.Optional;
 
-public class FeedBackDAO implements EntityDao<FeedBack> {
+public class FeedBackDAO implements EntityDAO<FeedBack> {
 
     private final PoolConnector poolConnector = PoolConnector.getInstance();
 
@@ -42,7 +42,7 @@ public class FeedBackDAO implements EntityDao<FeedBack> {
      */
     @Override
     public FeedBack get(long id) throws SQLException {
-        
+
         String query = "SELECT text, date FROM feedback WHERE id = ?";
         FeedBack feedBack = null;
 
@@ -70,7 +70,7 @@ public class FeedBackDAO implements EntityDao<FeedBack> {
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, feedBack.getText());
             preparedStatement.setTimestamp(2, new Timestamp(feedBack.getDate().getTime()));
-            preparedStatement.setLong(3,feedBack.getId());
+            preparedStatement.setLong(3, feedBack.getId());
             preparedStatement.execute();
         }
         return feedBack.getId();

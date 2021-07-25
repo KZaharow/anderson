@@ -5,13 +5,13 @@ import edu.anderson.zaharov.entity.Employer;
 import edu.anderson.zaharov.enumeration.EnglishSkill;
 import edu.anderson.zaharov.enumeration.WorkSkill;
 import edu.anderson.zaharov.exception.NoSuchDatabaseElementException;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 
 import java.sql.*;
 import java.util.Date;
 import java.util.Optional;
 
-public class EmployerDAO implements EntityDao<Employer> {
+public class EmployerDAO implements EntityDAO<Employer> {
 
     private final PoolConnector poolConnector = PoolConnector.getInstance();
 

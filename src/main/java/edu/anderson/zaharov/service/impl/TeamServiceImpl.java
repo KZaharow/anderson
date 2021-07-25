@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.service.impl;
 
 import edu.anderson.zaharov.entity.Team;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 import edu.anderson.zaharov.repository.impl.TeamDAO;
 import edu.anderson.zaharov.service.EntityService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,11 +11,11 @@ import java.sql.SQLException;
 @Slf4j
 public class TeamServiceImpl implements EntityService<Team> {
 
-    private final EntityDao<Team> dao = new TeamDAO();
+    private final EntityDAO<Team> dao = new TeamDAO();
 
     private long id;
 
-    private Team feedBack;
+    private Team team;
 
     // service
     @Override
@@ -33,11 +33,11 @@ public class TeamServiceImpl implements EntityService<Team> {
     @Override
     public Team get(long id) {
         try {
-            feedBack = dao.get(id);
+            team = dao.get(id);
         } catch (SQLException e) {
             log.error(e.toString());
         }
-        return feedBack;
+        return team;
     }
 
 

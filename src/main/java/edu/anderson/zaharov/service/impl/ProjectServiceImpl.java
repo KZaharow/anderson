@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.service.impl;
 
 import edu.anderson.zaharov.entity.Project;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 import edu.anderson.zaharov.repository.impl.ProjectDAO;
 import edu.anderson.zaharov.service.EntityService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,11 +11,11 @@ import java.sql.SQLException;
 @Slf4j
 public class ProjectServiceImpl implements EntityService<Project> {
 
-    private final EntityDao<Project> dao = new ProjectDAO();
+    private final EntityDAO<Project> dao = new ProjectDAO();
 
     private long id;
 
-    private Project feedBack;
+    private Project project;
 
     // service
     @Override
@@ -33,11 +33,11 @@ public class ProjectServiceImpl implements EntityService<Project> {
     @Override
     public Project get(long id) {
         try {
-            feedBack = dao.get(id);
+            project = dao.get(id);
         } catch (SQLException e) {
             log.error(e.toString());
         }
-        return feedBack;
+        return project;
     }
 
 

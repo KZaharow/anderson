@@ -2,7 +2,7 @@ package edu.anderson.zaharov.repository;
 
 import java.sql.SQLException;
 
-public interface EntityDao<T> {
+public interface EntityDAO<T> {
 
     long save(T t)throws SQLException;
 

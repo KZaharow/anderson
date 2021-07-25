@@ -3,13 +3,13 @@ package edu.anderson.zaharov.repository.impl;
 import edu.anderson.zaharov.connector.PoolConnector;
 import edu.anderson.zaharov.entity.Project;
 import edu.anderson.zaharov.exception.NoSuchDatabaseElementException;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 
 import java.sql.*;
 import java.util.Date;
 import java.util.Optional;
 
-public class ProjectDAO implements EntityDao<Project> {
+public class ProjectDAO implements EntityDAO<Project> {
 
     private final PoolConnector poolConnector = PoolConnector.getInstance();
 

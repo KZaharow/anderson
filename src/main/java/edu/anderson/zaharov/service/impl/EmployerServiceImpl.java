@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.service.impl;
 
 import edu.anderson.zaharov.entity.Employer;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 import edu.anderson.zaharov.repository.impl.EmployerDAO;
 import edu.anderson.zaharov.service.EntityService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,11 +11,11 @@ import java.sql.SQLException;
 @Slf4j
 public class EmployerServiceImpl implements EntityService<Employer> {
 
-    private final EntityDao<Employer> dao = new EmployerDAO();
+    private final EntityDAO<Employer> dao = new EmployerDAO();
 
     private long id;
 
-    private Employer feedBack;
+    private Employer employer;
 
     // service
     @Override
@@ -33,11 +33,11 @@ public class EmployerServiceImpl implements EntityService<Employer> {
     @Override
     public Employer get(long id) {
         try {
-            feedBack = dao.get(id);
+            employer = dao.get(id);
         } catch (SQLException e) {
             log.error(e.toString());
         }
-        return feedBack;
+        return employer;
     }
 
 

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class FeedBackDAOTest {
+class EntityDAOTest {
 
     @BeforeAll
     static void init() {

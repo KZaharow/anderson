@@ -79,6 +79,7 @@ class TeamDAOTest {
         Team team = new Team();
         team.setId(3L);
         team.setEmployerId(4L);
+        team.setTeamNameId(2L);
         try {
             long id = new TeamDAO().update(team);
             assertEquals(3, id);

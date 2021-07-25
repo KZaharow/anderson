@@ -1,7 +1,7 @@
 package edu.anderson.zaharov.service.impl;
 
 import edu.anderson.zaharov.entity.FeedBack;
-import edu.anderson.zaharov.repository.EntityDao;
+import edu.anderson.zaharov.repository.EntityDAO;
 import edu.anderson.zaharov.repository.impl.FeedBackDAO;
 import edu.anderson.zaharov.service.EntityService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 @Slf4j
 public class FeedBackServiceImpl implements EntityService<FeedBack> {
 
-    private final EntityDao<FeedBack> dao = new FeedBackDAO();
+    private final EntityDAO<FeedBack> dao = new FeedBackDAO();
 
     private long id;
 
