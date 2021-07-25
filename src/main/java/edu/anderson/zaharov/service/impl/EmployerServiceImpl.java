@@ -1,25 +1,25 @@
 package edu.anderson.zaharov.service.impl;
 
-import edu.anderson.zaharov.entity.FeedBack;
+import edu.anderson.zaharov.entity.Employer;
 import edu.anderson.zaharov.repository.EntityDao;
-import edu.anderson.zaharov.repository.impl.FeedBackDAO;
+import edu.anderson.zaharov.repository.impl.EmployerDAO;
 import edu.anderson.zaharov.service.EntityService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.SQLException;
 
 @Slf4j
-public class FeedBackDAOimpl implements EntityService<FeedBack> {
+public class EmployerServiceImpl implements EntityService<Employer> {
 
-    private final EntityDao<FeedBack> dao = new FeedBackDAO();
+    private final EntityDao<Employer> dao = new EmployerDAO();
 
     private long id;
 
-    private FeedBack feedBack;
+    private Employer feedBack;
 
     // service
     @Override
-    public long save(FeedBack item) {
+    public long save(Employer item) {
 
         try {
             id = dao.save(item);
@@ -31,7 +31,7 @@ public class FeedBackDAOimpl implements EntityService<FeedBack> {
 
 
     @Override
-    public FeedBack get(long id) {
+    public Employer get(long id) {
         try {
             feedBack = dao.get(id);
         } catch (SQLException e) {
@@ -42,7 +42,7 @@ public class FeedBackDAOimpl implements EntityService<FeedBack> {
 
 
     @Override
-    public void update(FeedBack feedBack) {
+    public void update(Employer feedBack) {
         try {
             dao.update(feedBack);
         } catch (SQLException e) {

@@ -119,7 +119,7 @@ class EmployerDAOTest {
 
         log.info("*** Test delete DAO *** ---> START");
         try {
-            new EmployerDAO().delete(3L);
+            new EmployerDAO().delete(5L);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
