@@ -19,7 +19,7 @@ public class FeedBackDAO implements EntityDao<FeedBack> {
     @Override
     public long save(FeedBack feedBack) throws SQLException {
 
-        String query = "INSERT INTO FEEDBACK (TEXT, DATE) VALUES (?,?)";
+        String query = "INSERT INTO feedback (TEXT, DATE) VALUES (?,?)";
         long id = 0L;
 
         try (Connection connection = poolConnector.getConnection()) {

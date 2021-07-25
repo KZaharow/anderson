@@ -1,11 +1,12 @@
 package edu.anderson.zaharov.entity;
 
+import edu.anderson.zaharov.enumeration.EnglishSkill;
+import edu.anderson.zaharov.enumeration.WorkSkill;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
 
 @Data
 @AllArgsConstructor
@@ -16,18 +17,27 @@ public class Employer {
 
     private String name;
 
+    private String surName;
+
     private String patronymic;
+
     private String eMail;
+
     private String tel;
+
     private Date birthday;
+
     private int experience;
+
     private Date employmentDate;
+
     private int projectId;
-    private String workSkill;
-    private String englishSkill;
 
+    private WorkSkill workSkill;
 
-    private String text;
+    private EnglishSkill englishSkill;
 
+    private String skype;
 
+    private int feedbackId;
 }

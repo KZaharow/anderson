@@ -1,7 +1,9 @@
 package edu.anderson.zaharov.repository.impl;
 
 import edu.anderson.zaharov.connector.PoolConnector;
-import edu.anderson.zaharov.entity.Project;
+import edu.anderson.zaharov.entity.Employer;
+import edu.anderson.zaharov.enumeration.EnglishSkill;
+import edu.anderson.zaharov.enumeration.WorkSkill;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.junit.jupiter.api.*;
@@ -16,10 +18,9 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ProjectDAOTest {
+class EmployerDAOTest {
 
     @BeforeAll
     static void init() {
@@ -45,17 +46,24 @@ class ProjectDAOTest {
     void save() {
 
         log.info("*** Test save DAO *** ---> START");
-        Project project = new Project();
-        project.setName("test");
-        project.setCostumer("test");
-        project.setFinishDate(new Date());
-        project.setMethodology("test");
-        project.setProjectManager("test");
-        project.setTeamNameId(1L);
-        ProjectDAO projectDAO = new ProjectDAO();
+        Employer employer = new Employer();
+        employer.setName("test");
+        employer.setSurName("test");
+        employer.setPatronymic("test");
+        employer.setEMail("test");
+        employer.setTel("test");
+        employer.setBirthday(new Date());
+        employer.setExperience(0);
+        employer.setEmploymentDate(new Date());
+        employer.setProjectId(1);
+        employer.setWorkSkill(WorkSkill.J1);
+        employer.setEnglishSkill(EnglishSkill.A1);
+        employer.setSkype("test");
+        employer.setFeedbackId(1);
+        EmployerDAO employerDAO = new EmployerDAO();
         try {
-            Long id1 = projectDAO.save(project);
-            Long id2 = projectDAO.save(project);
+            Long id1 = employerDAO.save(employer);
+            Long id2 = employerDAO.save(employer);
             assertEquals(1, id2 - id1);
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -69,7 +77,7 @@ class ProjectDAOTest {
 
         log.info("*** Test get DAO *** ---> START");
         try {
-            assertEquals(3L, new ProjectDAO().get(3L).getId());
+            assertEquals(3L, new EmployerDAO().get(3L).getId());
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -81,16 +89,23 @@ class ProjectDAOTest {
     void update() {
 
         log.info("*** Test update DAO *** ---> START");
-        Project project = new Project();
-        project.setId(3L);
-        project.setName("upd");
-        project.setCostumer("upd");
-        project.setFinishDate(new Date());
-        project.setMethodology("upd");
-        project.setProjectManager("upd");
-        project.setTeamNameId(1L);
+        Employer employer = new Employer();
+        employer.setId(3L);
+        employer.setName("upd");
+        employer.setSurName("upd");
+        employer.setPatronymic("upd");
+        employer.setEMail("upd");
+        employer.setTel("upd");
+        employer.setBirthday(new Date());
+        employer.setExperience(0);
+        employer.setEmploymentDate(new Date());
+        employer.setProjectId(1);
+        employer.setWorkSkill(WorkSkill.J1);
+        employer.setEnglishSkill(EnglishSkill.A1);
+        employer.setSkype("upd");
+        employer.setFeedbackId(1);
         try {
-            long id = new ProjectDAO().update(project);
+            long id = new EmployerDAO().update(employer);
             assertEquals(3, id);
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -104,7 +119,7 @@ class ProjectDAOTest {
 
         log.info("*** Test delete DAO *** ---> START");
         try {
-            new ProjectDAO().delete(5L);
+            new EmployerDAO().delete(3L);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
