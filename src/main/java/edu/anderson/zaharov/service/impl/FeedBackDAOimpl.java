@@ -1,6 +1,5 @@
 package edu.anderson.zaharov.service.impl;
 
-import com.sun.xml.internal.ws.server.EndpointAwareTube;
 import edu.anderson.zaharov.entity.FeedBack;
 import edu.anderson.zaharov.repository.EntityDao;
 import edu.anderson.zaharov.repository.impl.FeedBackDAO;
@@ -16,30 +15,48 @@ public class FeedBackDAOimpl implements EntityService<FeedBack> {
 
     private long id;
 
+    private FeedBack feedBack;
+
     // service
     @Override
     public long save(FeedBack item) {
 
-        try{
+        try {
             id = dao.save(item);
         } catch (SQLException e) {
-           log.error("save item error, {}", e.getMessage());
+            log.error("save item error, {}", e.getMessage());
         }
         return id;
     }
 
+
     @Override
     public FeedBack get(long id) {
-        return null;
+        try {
+            feedBack = dao.get(id);
+        } catch (SQLException e) {
+            log.error(e.toString());
+        }
+        return feedBack;
     }
+
 
     @Override
-    public void update(FeedBack item) {
-
+    public void update(FeedBack feedBack) {
+        try {
+            dao.update(feedBack);
+        } catch (SQLException e) {
+            log.error(e.toString());
+        }
     }
+
 
     @Override
     public void delete(long id) {
-
+        try {
+            dao.delete(id);
+        } catch (SQLException e) {
+            log.error(e.toString());
+        }
     }
 }
