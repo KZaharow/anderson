@@ -1,16 +1,11 @@
 package edu.anderson.zaharov.spring_annotation;
 
 import edu.anderson.zaharov.spring_annotation.config.AppCfg;
-import edu.anderson.zaharov.spring_annotation.yaml.YamlReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import edu.anderson.zaharov.spring_annotation.repository.impl.TeamNameDAO;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.SQLException;
 
 public class Main {
 
@@ -18,8 +13,17 @@ public class Main {
     public static void main(String... args) {
 
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppCfg.class);
+        TeamNameDAO teamNameDAO = ctx.getBean("teamNameDAO", TeamNameDAO.class);
+
         int i = ctx.getBeanDefinitionCount();
         System.out.println(i);
+
+        try {
+            System.out.println(teamNameDAO.findById(1L));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ;
         ctx.close();
 /*
         SingerDao singerDao = ctx.getBean(SingerDao.class);
