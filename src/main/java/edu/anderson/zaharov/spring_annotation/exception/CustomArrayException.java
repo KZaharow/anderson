@@ -1,4 +1,4 @@
-package edu.anderson.zaharov.exception;
+package edu.anderson.zaharov.spring_annotation.exception;
 
 import lombok.RequiredArgsConstructor;
 

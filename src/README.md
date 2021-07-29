@@ -133,7 +133,7 @@ Exception in thread "main"
 *Exceptions*  
 ---
 ####1. Дайте определение понятию “исключение”  
->An exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions.
+>An edu.anderson.zaharov.spring_annotation.exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions.
 
 ####2. Какова иерархия исключений.  
 >https://docs.oracle.com/javase/tutorial/essential/exceptions/throwing.html  
