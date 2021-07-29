@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Slf4j
 class TeamNameDaoImplTest {
 
-    private GenericApplicationContext ctx;
+    private static GenericApplicationContext ctx;
 
-    private TeamNameDao teamNameDao;
+    private static TeamNameDao teamNameDao;
 
     @BeforeAll
-    public static void setUp() {
+    static void setUp() {
 
         ctx = new AnnotationConfigApplicationContext(AppCfg.class);
         teamNameDao = ctx.getBean(TeamNameDao.class);
@@ -49,29 +49,31 @@ class TeamNameDaoImplTest {
     @Test
     public void testUpdate() {
 
-        TeamName teamName = teamNameDao.findEntityById(3L);
+        TeamName teamName = teamNameDao.findEntityById(2L);
         //making sure such teamName exists
         assertNotNull(teamName);
         //making sure we got expected record
-        assertEquals("test", teamName.getName());
+        assertEquals("Команда Б", teamName.getName());
         teamName.setName("changed");
         teamNameDao.saveOrUpdateEntityById(teamName);
-        teamName = teamNameDao.findEntityById(3L);
+        teamName = teamNameDao.findEntityById(2L);
         assertEquals("changed", teamName.getName());
+        log.info(teamName.toString());
     }
 
     @Test
     public void testDelete() {
 
-        TeamName teamName = teamNameDao.findEntityById(3l);
+        TeamName teamName = teamNameDao.findEntityById(1L);
         //making sure such teamName exists
         assertNotNull(teamName);
         teamNameDao.deleteEntityByName(teamName);
+        log.info(teamName.toString());
     }
 
 
     @AfterAll
-    public void tearDown() {
+    static void tearDown() {
 
         ctx.close();
     }
