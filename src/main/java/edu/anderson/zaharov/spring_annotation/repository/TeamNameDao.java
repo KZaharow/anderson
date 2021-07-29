@@ -4,9 +4,9 @@ import edu.anderson.zaharov.spring_annotation.entity.TeamName;
 
 public interface TeamNameDao {
 
-    long SaveOrUpdateEntityById(TeamName teamName);
+    long saveOrUpdateEntityById(TeamName teamName);
 
     TeamName findEntityById(long id);
 
-    void deleteEntityById(TeamName teamName);
+    void deleteEntityByName(TeamName teamName);
 }

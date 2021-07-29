@@ -1,128 +1,78 @@
 package edu.anderson.zaharov.spring_annotation.repository.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import edu.anderson.zaharov.spring_annotation.config.AppCfg;
+import edu.anderson.zaharov.spring_annotation.entity.TeamName;
+import edu.anderson.zaharov.spring_annotation.repository.TeamNameDao;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@Slf4j
 class TeamNameDaoImplTest {
 
-    private static Logger logger = LoggerFactory.getLogger(SingerDaoTest.class);
-
     private GenericApplicationContext ctx;
-    private SingerDao singerDao;
 
-    @Before
-    public void setUp(){
-        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        singerDao = ctx.getBean(SingerDao.class);
-        assertNotNull(singerDao);
+    private TeamNameDao teamNameDao;
+
+    @BeforeAll
+    public static void setUp() {
+
+        ctx = new AnnotationConfigApplicationContext(AppCfg.class);
+        teamNameDao = ctx.getBean(TeamNameDao.class);
+        assertNotNull(teamNameDao);
     }
 
     @Test
-    public void testFindAll(){
-        List<Singer> singers = singerDao.findAll();
-        assertEquals(3, singers.size());
-        listSingers(singers);
+    public void testFindByID() {
+
+        TeamName teamName = teamNameDao.findEntityById(1L);
+        assertNotNull(teamName);
+        log.info(teamName.toString());
     }
 
     @Test
-    public void testFindAllWithAlbum(){
-        List<Singer> singers = singerDao.findAllWithAlbum();
-        assertEquals(3, singers.size());
-        listSingersWithAlbum(singers);
+    public void testInsert() {
+
+        TeamName teamName = new TeamName();
+        teamName.setName("test");
+        teamNameDao.saveOrUpdateEntityById(teamName);
+        assertNotNull(teamName.getId());
+        log.info(teamName.toString());
     }
 
     @Test
-    public void testFindByID(){
-        Singer  singer = singerDao.findById(1L);
-        assertNotNull(singer);
-        logger.info(singer.toString());
-    }
+    public void testUpdate() {
 
-    @Test
-    public void testInsert(){
-        Singer singer = new Singer();
-        singer.setFirstName("BB");
-        singer.setLastName("King");
-        singer.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
-
-        Album album = new Album();
-        album.setTitle("My Kind of Blues");
-        album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
-        singer.addAlbum(album);
-
-        album = new Album();
-        album.setTitle("A Heart Full of Blues");
-        album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
-        singer.addAlbum(album);
-
-        singerDao.save(singer);
-        assertNotNull(singer.getId());
-
-        List<Singer> singers = singerDao.findAllWithAlbum();
-        assertEquals(4, singers.size());
-        listSingersWithAlbum(singers);
-    }
-
-    @Test
-    public void testUpdate(){
-        Singer singer = singerDao.findById(1L);
-        //making sure such singer exists
-        assertNotNull(singer);
+        TeamName teamName = teamNameDao.findEntityById(3L);
+        //making sure such teamName exists
+        assertNotNull(teamName);
         //making sure we got expected record
-        assertEquals("Mayer", singer.getLastName());
-        //retrieve the album
-        Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
-
-        singer.setFirstName("John Clayton");
-        singer.removeAlbum(album);
-        singerDao.save(singer);
-
-        listSingersWithAlbum(singerDao.findAllWithAlbum());
+        assertEquals("test", teamName.getName());
+        teamName.setName("changed");
+        teamNameDao.saveOrUpdateEntityById(teamName);
+        teamName = teamNameDao.findEntityById(3L);
+        assertEquals("changed", teamName.getName());
     }
 
     @Test
-    public void testDelete(){
-        Singer singer = singerDao.findById(2l);
-        //making sure such singer exists
-        assertNotNull(singer);
-        singerDao.delete(singer);
+    public void testDelete() {
 
-        listSingersWithAlbum(singerDao.findAllWithAlbum());
+        TeamName teamName = teamNameDao.findEntityById(3l);
+        //making sure such teamName exists
+        assertNotNull(teamName);
+        teamNameDao.deleteEntityByName(teamName);
     }
 
 
-    private static void listSingers(List<Singer> singers) {
-        logger.info(" ---- Listing singers:");
-        singers.forEach(singer -> logger.info(singer.toString()));
-    }
+    @AfterAll
+    public void tearDown() {
 
-    private static void listSingersWithAlbum(List<Singer> singers) {
-        logger.info(" ---- Listing singers with instruments:");
-        singers.forEach(singer -> {
-            logger.info(singer.toString());
-            if (singer.getAlbums() != null) {
-                singer.getAlbums().forEach(album -> logger.info("\t" + album.toString()));
-            }
-            if (singer.getInstruments() != null) {
-                singer.getInstruments().forEach(instrument -> instrument.getInstrumentId());
-            }
-        });
-    }
-
-    @After
-    public void tearDown(){
         ctx.close();
     }
-
 }

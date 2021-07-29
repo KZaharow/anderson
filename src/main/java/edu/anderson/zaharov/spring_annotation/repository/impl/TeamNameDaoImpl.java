@@ -18,7 +18,7 @@ public class TeamNameDaoImpl implements TeamNameDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public long SaveOrUpdateEntityById(TeamName teamName) {
+    public long saveOrUpdateEntityById(TeamName teamName) {
 
         sessionFactory.getCurrentSession().saveOrUpdate(teamName);
         Long id = teamName.getId();
@@ -38,7 +38,7 @@ public class TeamNameDaoImpl implements TeamNameDao {
     }
 
     @Override
-    public void deleteEntityById(TeamName teamName) {
+    public void deleteEntityByName(TeamName teamName) {
 
         sessionFactory.getCurrentSession().delete(teamName);
         log.info(" ** --> Entity has been deleted: {}", teamName);

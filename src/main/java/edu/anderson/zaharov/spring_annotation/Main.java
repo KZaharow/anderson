@@ -17,12 +17,12 @@ public class Main {
         teamNameDao.findEntityById(1L);
         TeamName teamName = new TeamName();
         teamName.setName("test");
-        long l = teamNameDao.SaveOrUpdateEntityById(teamName);
+        long l = teamNameDao.saveOrUpdateEntityById(teamName);
         teamName.setId(l);
         teamName.setName("test change");
-        l = teamNameDao.SaveOrUpdateEntityById(teamName);
+        l = teamNameDao.saveOrUpdateEntityById(teamName);
         teamNameDao.findEntityById(l);
-        teamNameDao.deleteEntityById(teamName);
+        teamNameDao.deleteEntityByName(teamName);
         ctx.close();
 /*
         SingerDao singerDao = ctx.getBean(SingerDao.class);
