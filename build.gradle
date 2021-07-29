@@ -48,6 +48,9 @@ dependencies {
     testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
 
+    // HikariCP
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
+
     // sonar
     implementation group: 'org.sonarsource.scanner.maven', name: 'sonar-maven-plugin', version: '3.9.0.2155'
 }

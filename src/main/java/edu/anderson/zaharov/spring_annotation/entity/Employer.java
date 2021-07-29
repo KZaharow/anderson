@@ -65,6 +65,6 @@ public class Employer {
     private Project project;
 
     @ManyToOne
-    @JoinColumn()
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 }
