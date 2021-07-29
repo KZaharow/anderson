@@ -1,11 +1,10 @@
 package edu.anderson.zaharov.spring_annotation;
 
 import edu.anderson.zaharov.spring_annotation.config.AppCfg;
-import edu.anderson.zaharov.spring_annotation.repository.impl.TeamNameDAO;
+import edu.anderson.zaharov.spring_annotation.entity.TeamName;
+import edu.anderson.zaharov.spring_annotation.repository.TeamNameDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
-
-import java.sql.SQLException;
 
 public class Main {
 
@@ -13,17 +12,17 @@ public class Main {
     public static void main(String... args) {
 
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppCfg.class);
-        TeamNameDAO teamNameDAO = ctx.getBean("teamNameDAO", TeamNameDAO.class);
+        TeamNameDao teamNameDao = ctx.getBean(TeamNameDao.class);
 
-        int i = ctx.getBeanDefinitionCount();
-        System.out.println(i);
-
-        try {
-            System.out.println(teamNameDAO.findById(1L));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        ;
+        teamNameDao.findEntityById(1L);
+        TeamName teamName = new TeamName();
+        teamName.setName("test");
+        long l = teamNameDao.SaveOrUpdateEntityById(teamName);
+        teamName.setId(l);
+        teamName.setName("test change");
+        l = teamNameDao.SaveOrUpdateEntityById(teamName);
+        teamNameDao.findEntityById(l);
+        teamNameDao.deleteEntityById(teamName);
         ctx.close();
 /*
         SingerDao singerDao = ctx.getBean(SingerDao.class);
