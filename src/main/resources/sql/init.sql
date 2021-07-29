@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS team;
 DROP TABLE IF EXISTS employer;
 DROP TABLE IF EXISTS project;
 DROP TABLE IF EXISTS feedback;
-DROP TABLE IF EXISTS team_name;
 
 CREATE TABLE employer
 (
@@ -24,7 +23,7 @@ CREATE TABLE employer
 
 CREATE TABLE feedback
 (
-    id              SERIAL PRIMARY KEY NOT NULL,
+    id   SERIAL PRIMARY KEY NOT NULL,
     text text,
     date timestamp
 );
@@ -42,22 +41,20 @@ CREATE TABLE project
 
 CREATE TABLE team
 (
-    id              SERIAL PRIMARY KEY NOT NULL,
-    team_name_id integer,
-    employer_id  integer
+    id          SERIAL PRIMARY KEY NOT NULL,
+    name        text,
+    employer_id integer
 );
 
-CREATE TABLE team_name
-(
-    id              SERIAL PRIMARY KEY NOT NULL,
-    name text
-);
 
-ALTER TABLE employer ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project(id);
-ALTER TABLE employer ADD CONSTRAINT employer_feedback_id_fk FOREIGN KEY (feedback_id) REFERENCES feedback(id);
-ALTER TABLE project ADD CONSTRAINT project_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id);
-ALTER TABLE team ADD CONSTRAINT team_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id) ;
-ALTER TABLE team ADD CONSTRAINT team_employer_id_fk FOREIGN KEY (employer_id) REFERENCES employer(id);
+ALTER TABLE employer
+    ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project (id);
+ALTER TABLE employer
+    ADD CONSTRAINT employer_feedback_id_fk FOREIGN KEY (feedback_id) REFERENCES feedback (id);
+ALTER TABLE project
+    ADD CONSTRAINT project_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name (id);
+ALTER TABLE team
+    ADD CONSTRAINT team_employer_id_fk FOREIGN KEY (employer_id) REFERENCES employer (id);
 
 INSERT INTO team_name (id, name)
 VALUES (1, 'Команда А');

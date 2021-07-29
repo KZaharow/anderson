@@ -4,25 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "team")
-@NamedQueries({
-        @NamedQuery(name = "Team.findById", query = "select distinct t from TeamName t where t.id = :id")
-})
-
 public class Team {
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
+    @Column
     private Long teamNameId;
 
-    private Long employerId;
+    @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Employer> employers = new HashSet<>();
 }
