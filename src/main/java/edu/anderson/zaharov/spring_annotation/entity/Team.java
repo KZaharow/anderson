@@ -24,9 +24,6 @@ public class Team {
     @Column
     private Long teamNameId;
 
-    @OneToOne(mappedBy = "team")
-    private Project project;
-
     @OneToMany(mappedBy = "team", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<Employer> employers;
 }

@@ -35,10 +35,6 @@ public class Project {
     @Column
     private String projectManager;
 
-    @OneToOne
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private Team team;
-
     @OneToOne(mappedBy = "project")
     private Employer employer;
 }

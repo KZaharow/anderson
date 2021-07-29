@@ -5,17 +5,21 @@ import edu.anderson.zaharov.spring_annotation.repository.FeedBackDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
+@Repository("feedBackDao")
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class FeedBackDaoImpl implements FeedBackDao {
 
     private final SessionFactory sessionFactory;
 
     @Override
     public long saveOrUpdateEntityById(FeedBack feedBack) {
-
+sessionFactory.getCurrentSession().
         sessionFactory.getCurrentSession().saveOrUpdate(feedBack);
         Long id = feedBack.getId();
         log.info(" ** --> Entity has been saved: {}", feedBack);
@@ -27,7 +31,7 @@ public class FeedBackDaoImpl implements FeedBackDao {
     public FeedBack findEntityById(long id) {
 
         FeedBack feedBack = (FeedBack) sessionFactory.getCurrentSession().
-                getNamedQuery("FeedBac").
+                getNamedQuery("FeedBack.findById").
                 setParameter("id", id).uniqueResult();
         log.info(" ** --> Entity has been found: {}", feedBack);
         return feedBack;
@@ -40,3 +44,4 @@ public class FeedBackDaoImpl implements FeedBackDao {
         log.info(" ** --> Entity has been deleted: {}", feedBack);
     }
 }
+

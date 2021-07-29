@@ -1,18 +1,33 @@
-insert into singer (first_name, last_name, birth_date) values ('John', 'Mayer', '1977-10-16');
-insert into singer (first_name, last_name, birth_date) values ('Eric', 'Clapton', '1945-03-30');
-insert into singer (first_name, last_name, birth_date) values ('John', 'Butler', '1975-04-01');
+INSERT INTO feedback (text, date)
+VALUES ('Замечательно справился', '2021-01-01 12:00:01.000000');
+INSERT INTO feedback (text, date)
+VALUES ('Успешно, хотим еще', '2021-02-02 10:00:01.000000');
 
-insert into album (singer_id, title, release_date) values (1, 'The Search For Everything', '2017-01-20');
-insert into album (singer_id, title, release_date) values (1, 'Battle Studies', '2009-11-17');
-insert into album (singer_id, title, release_date) values (2, 'From The Cradle ', '1994-09-13');
+INSERT INTO project (name, costumer, finish_date, methodology, project_manager)
+VALUES ('iPay', 'BelBank', '2021-12-31 10:00:01.000000', 'Spring boot', 'MANAGER_1');
+INSERT INTO project (name, costumer, finish_date, methodology, project_manager)
+VALUES ('qBank', 'ExtBank', '2021-12-31 10:00:01.000000', 'Spring boot', 'MANAGER_2');
 
+INSERT INTO team (name)
+VALUES ('Команда 1');
+INSERT INTO team (name)
+VALUES ('Команда 2');
 
-insert into instrument (instrument_id) values ('Guitar');
-insert into instrument (instrument_id) values ('Piano');
-insert into instrument (instrument_id) values ('Voice');
-insert into instrument (instrument_id) values ('Drums');
-insert into instrument (instrument_id) values ('Synthesizer');
+INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
+VALUES ('Иван', 'Иванов', 'Иванович', 'ivan@mail.ru', '(232)11-22-00', '1990-01-01 10:00:01.000000', 70,
+        '2018-01-10 10:00:01.000000', 'm1', 'B1', 'ivanSkype', 1, 1, 1);
 
-insert into singer_instrument(singer_id, instrument_id) values (1, 'Guitar');
-insert into singer_instrument(singer_id, instrument_id) values (1, 'Piano');
-insert into singer_instrument(singer_id, instrument_id) values (2, 'Guitar');
+INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
+VALUES ('Олег', 'Олегов', 'Олегович', 'oleg@mail.ru', '(232)11-22-01', '1991-01-01 10:00:01.000000', 80,
+        '2019-01-10 10:00:01.000000', 'm2', 'B2', 'olegSkype', 1, 1, 1);
+INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
+VALUES ('Петр', 'Петров', 'Петрович', 'petr@mail.ru', '(232)11-22-02', '1992-02-02 10:00:01.000000', 90,
+        '2020-01-10 10:00:01.000000', 's1', 'C1', 'petrSkype', 1, 1, 1);
+
+INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
+VALUES ('Глеб', 'Глебов', 'Глебович', 'gleb@mail.ru', '(232)11-22-03', '1993-03-03 10:00:01.000000', 99,
+        '2020-02-10 10:00:01.000000', 's2', 'C2', 'glebSkype', 1, 1, 1);

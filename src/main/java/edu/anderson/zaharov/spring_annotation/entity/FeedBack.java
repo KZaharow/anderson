@@ -29,7 +29,4 @@ public class FeedBack {
     @Column
     @Temporal(TemporalType.DATE)
     private Date date;
-
-    @OneToOne(mappedBy = "feedBack")
-    private Employer employer;
 }
