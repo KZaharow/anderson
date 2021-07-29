@@ -14,6 +14,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "feedback")
+@NamedQueries({
+        @NamedQuery(name = "FeedBack.findById", query = "select distinct f from FeedBack f where f.id = :id")
+})
 public class FeedBack {
 
     @Id

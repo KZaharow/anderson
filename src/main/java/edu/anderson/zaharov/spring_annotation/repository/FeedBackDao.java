@@ -1,12 +1,12 @@
 package edu.anderson.zaharov.spring_annotation.repository;
 
-import edu.anderson.zaharov.spring_annotation.entity.TeamName;
+import edu.anderson.zaharov.spring_annotation.entity.FeedBack;
 
 public interface FeedBackDao {
 
-    long saveOrUpdateEntityById(TeamName teamName);
+    long saveOrUpdateEntityById(FeedBack feedBack);
 
-    TeamName findEntityById(long id);
+    FeedBack findEntityById(long id);
 
-    void deleteEntityByName(TeamName teamName);
+    void deleteEntityByName(FeedBack feedBack);
 }
