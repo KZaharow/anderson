@@ -1,7 +1,6 @@
 package edu.anderson.zaharov.dao;
 
 
-import edu.anderson.zaharov.entity.Company;
 import edu.anderson.zaharov.entity.Employer;
 
 import java.util.List;

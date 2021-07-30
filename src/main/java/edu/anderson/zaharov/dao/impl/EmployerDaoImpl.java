@@ -2,7 +2,6 @@ package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.AbstractDAO;
 import edu.anderson.zaharov.dao.EmployerDao;
-import edu.anderson.zaharov.entity.Company;
 import edu.anderson.zaharov.entity.Employer;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
