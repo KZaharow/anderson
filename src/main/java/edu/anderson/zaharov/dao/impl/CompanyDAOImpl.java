@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Allan on 23/10/2015.
- */
 public class CompanyDAOImpl extends AbstractDAO implements CompanyDAO {
 
     public void setSessionFactory(SessionFactory sessionFactory) {super.setSessionFactory(sessionFactory); }

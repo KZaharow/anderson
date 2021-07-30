@@ -11,6 +11,6 @@ public class SpringHibernateXml {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-hibernate-xml.xml");
 
         CompanyDAO companyDAO = (CompanyDAO) context.getBean("companyDAO");
-        System.out.println(companyDAO.findAll().size());
+        System.out.println(companyDAO.findAll());
     }
 }
