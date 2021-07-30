@@ -5,13 +5,6 @@
 <hibernate-configuration>
     <session-factory>
 
-        <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
-        <!--<property name="hibernate.connecDriver</">jdbc:mysql://localhost:8084/dohbedoh</property>-->
-        <!--<property name="hibernate.connection.username">burdaall</property>-->
-        <!--<property name="hibernate.connection.password">password</property>-->
-        <!--<property name="hibernate.connection.autocommit">true</property>-->
-        <!--<property name="hibernate.default_schema">BURDAALL</property>-->
-
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
