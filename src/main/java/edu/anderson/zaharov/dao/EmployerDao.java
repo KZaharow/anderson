@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EmployerDao {
 
-    void deleteById(long id);
+    void deleteById(int id);
 
     Employer findById(int id);
 

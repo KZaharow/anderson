@@ -8,7 +8,9 @@
         </meta>
         <id name="id" type="int">
             <column name="id" precision="5" scale="0"/>
-            <generator class="native"/>
+            <generator class="sequence">
+                <param name="sequence">sq2</param>
+            </generator>
         </id>
 
         <property name="name" type="string">

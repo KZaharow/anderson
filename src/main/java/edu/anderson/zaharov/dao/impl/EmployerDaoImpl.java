@@ -41,7 +41,7 @@ public class EmployerDaoImpl extends AbstractDAO implements EmployerDao {
     @Override
     public int insert(Employer employer) {
 
-        getSession().saveOrUpdate(employer);
+        getSession().save(employer);
         return employer.getId();
     }
 

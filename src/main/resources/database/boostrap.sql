@@ -2,6 +2,11 @@ DROP TABLE IF EXISTS team;
 DROP TABLE IF EXISTS employer;
 DROP TABLE IF EXISTS project;
 DROP TABLE IF EXISTS feedback;
+DROP SEQUENCE IF EXISTS sq1;
+DROP SEQUENCE IF EXISTS sq2;
+DROP SEQUENCE IF EXISTS sq3;
+DROP SEQUENCE IF EXISTS sq4;
+
 
 CREATE TABLE employer
 (
@@ -44,6 +49,11 @@ CREATE TABLE team
     id   SERIAL PRIMARY KEY NOT NULL,
     name varchar(30)
 );
+
+create sequence sq1 start 3 increment 1;
+create sequence sq2 start 3 increment 1;
+create sequence sq3 start 3 increment 1;
+create sequence sq4 start 3 increment 1;
 /*
 
 ALTER TABLE employer
