@@ -11,6 +11,13 @@ CREATE TABLE feedback
     date timestamp
 );
 
+CREATE TABLE team
+(
+    id   bigint AUTO_INCREMENT
+        CONSTRAINT team primary key,
+    name text
+);
+
 CREATE TABLE employer
 (
     id              bigint AUTO_INCREMENT
@@ -18,7 +25,7 @@ CREATE TABLE employer
     name            text,
     surname         text,
     patronymic      text,
-    email          text,
+    mail           text,
     tel             text,
     birthday        timestamp,
     experience      integer,
@@ -41,14 +48,6 @@ CREATE TABLE project
     methodology     text,
     project_manager text
 );
-
-CREATE TABLE team
-(
-    id   bigint AUTO_INCREMENT
-        CONSTRAINT team primary key,
-    name text
-);
-
 
 ALTER TABLE employer
     ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project (id);

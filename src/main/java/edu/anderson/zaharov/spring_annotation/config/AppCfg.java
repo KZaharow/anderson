@@ -28,7 +28,7 @@ public class AppCfg {
         try {
             EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
             return dbBuilder.setType(EmbeddedDatabaseType.H2)
-                    .addScripts("classpath:sql/init.sql").
+                    .addScripts("classpath:sql/schema.sql", "classpath:sql/test-data.sql").
                             setName("myTest").
                             build();
         } catch (Exception e) {
@@ -47,9 +47,6 @@ public class AppCfg {
         hibernateProp.put("hibernate.max_fetch_depth", 3);
         hibernateProp.put("hibernate.jdbc.batch_size", 10);
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
-        //hibernateProp.put("hibernate.connection.provider_class", "com.zaxxer.hikari.hibernate.HikariConnectionProvider");
-        //hibernate.connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
-        //hibernateProp.put("hibernate.connection.provider_class", "org.hibernate.connection.C3P0ConnectionProvider");
         return hibernateProp;
     }
 
