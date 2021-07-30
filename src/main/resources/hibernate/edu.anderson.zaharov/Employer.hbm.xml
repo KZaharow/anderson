@@ -42,28 +42,28 @@
             <column name="employment_data" length="30"/>
         </property>
 
-        <property name="" type="string">
-            <column name="" length="30"/>
+        <property name="workSkill" type="string">
+            <column name="work_skill" length="30"/>
         </property>
 
-        <property name="" type="string">
-            <column name="" length="30"/>
+        <property name="englishSkill" type="string">
+            <column name="english_skill" length="30"/>
         </property>
 
-        <property name="" type="string">
-            <column name="" length="30"/>
+        <property name="skype" type="string">
+            <column name="skype" length="30"/>
         </property>
 
-        <property name="" type="string">
-            <column name="" length="30"/>
+        <property name="feedbackId" type="string">
+            <column name="feedback_id" length="30"/>
         </property>
 
-        <property name="" type="string">
-            <column name="" length="30"/>
+        <property name="projectId" type="string">
+            <column name="project_id" length="30"/>
         </property>
 
-        <property name="" type="string">
-            <column name="" length="30"/>
+        <property name="teamId" type="string">
+            <column name="team_id" length="30"/>
         </property>
     </class>
 </hibernate-mapping>
