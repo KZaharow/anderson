@@ -12,4 +12,12 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
+    <bean id="projectDAO" class="edu.anderson.zaharov.dao.impl.ProjectDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="feedBackDAO" class="edu.anderson.zaharov.dao.impl.FeedBackDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
 </beans>

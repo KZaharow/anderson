@@ -1,8 +1,8 @@
 package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.AbstractDAO;
-import edu.anderson.zaharov.dao.EmployerDao;
-import edu.anderson.zaharov.entity.Employer;
+import edu.anderson.zaharov.dao.ProjectDao;
+import edu.anderson.zaharov.entity.Project;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional
-public class EmployerDaoImpl extends AbstractDAO implements EmployerDao {
-
+public class ProjectDaoImpl  extends AbstractDAO implements ProjectDao {
+    
     public void setSessionFactory(SessionFactory sessionFactory) {
 
         super.setSessionFactory(sessionFactory);
@@ -25,29 +25,29 @@ public class EmployerDaoImpl extends AbstractDAO implements EmployerDao {
     }
 
     @Override
-    public Employer findById(int id) {
+    public Project findById(int id) {
 
-        Criteria criteria = getSession().createCriteria(Employer.class);
+        Criteria criteria = getSession().createCriteria(Project.class);
         criteria.add(Restrictions.eq("id", id));
-        return (Employer) criteria.uniqueResult();
+        return (Project) criteria.uniqueResult();
     }
 
     @Override
-    public List<Employer> findAll() {
+    public List<Project> findAll() {
 
-        return (List<Employer>) getSession().createCriteria(Employer.class).list();
+        return (List<Project>) getSession().createCriteria(Project.class).list();
     }
 
     @Override
-    public int insert(Employer employer) {
+    public int insert(Project project) {
 
-        getSession().save(employer);
-        return employer.getId();
+        getSession().save(project);
+        return project.getId();
     }
 
     @Override
-    public void update(Employer employer) {
+    public void update(Project project) {
 
-        getSession().saveOrUpdate(employer);
+        getSession().saveOrUpdate(project);
     }
 }

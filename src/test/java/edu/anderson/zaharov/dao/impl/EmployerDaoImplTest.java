@@ -37,6 +37,11 @@ class EmployerDaoImplTest {
 
     @Test
     void deleteById() {
+
+        int sizeBefore = employerDao.findAll().size();
+        employerDao.deleteById(employerDao.findAll().size());
+        int sizeAfter = employerDao.findAll().size();
+        assertEquals(1, sizeBefore - sizeAfter);
     }
 
     @Test
@@ -52,7 +57,7 @@ class EmployerDaoImplTest {
 
         List<Employer> employers = employerDao.findAll();
         log.info(employers.toString());
-        assertEquals(2, employers.size());
+        assertNotNull(employers.size());
     }
 
     @Test
@@ -82,5 +87,11 @@ class EmployerDaoImplTest {
 
     @Test
     void update() {
+
+        Employer employer = employerDao.findById(1);
+        log.info(employer.toString());
+        employer.setProjectId(5);
+        employerDao.update(employer);
+        assertEquals(5, employerDao.findById(1).getProjectId());
     }
 }

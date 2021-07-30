@@ -1,8 +1,8 @@
 package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.AbstractDAO;
-import edu.anderson.zaharov.dao.EmployerDao;
-import edu.anderson.zaharov.entity.Employer;
+import edu.anderson.zaharov.dao.FeedBackDao;
+import edu.anderson.zaharov.entity.FeedBack;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional
-public class EmployerDaoImpl extends AbstractDAO implements EmployerDao {
-
+public class FeedBackDaoImpl extends AbstractDAO implements FeedBackDao {
+    
     public void setSessionFactory(SessionFactory sessionFactory) {
 
         super.setSessionFactory(sessionFactory);
@@ -25,29 +25,29 @@ public class EmployerDaoImpl extends AbstractDAO implements EmployerDao {
     }
 
     @Override
-    public Employer findById(int id) {
+    public FeedBack findById(int id) {
 
-        Criteria criteria = getSession().createCriteria(Employer.class);
+        Criteria criteria = getSession().createCriteria(FeedBack.class);
         criteria.add(Restrictions.eq("id", id));
-        return (Employer) criteria.uniqueResult();
+        return (FeedBack) criteria.uniqueResult();
     }
 
     @Override
-    public List<Employer> findAll() {
+    public List<FeedBack> findAll() {
 
-        return (List<Employer>) getSession().createCriteria(Employer.class).list();
+        return (List<FeedBack>) getSession().createCriteria(FeedBack.class).list();
     }
 
     @Override
-    public int insert(Employer employer) {
+    public int insert(FeedBack feedBack) {
 
-        getSession().save(employer);
-        return employer.getId();
+        getSession().save(feedBack);
+        return feedBack.getId();
     }
 
     @Override
-    public void update(Employer employer) {
+    public void update(FeedBack feedBack) {
 
-        getSession().saveOrUpdate(employer);
+        getSession().saveOrUpdate(feedBack);
     }
 }

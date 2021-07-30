@@ -18,5 +18,7 @@
 
         <mapping resource="hibernate/edu.anderson.zaharov/Employer.hbm.xml"></mapping>
         <mapping resource="hibernate/edu.anderson.zaharov/Team.hbm.xml"></mapping>
+        <mapping resource="hibernate/edu.anderson.zaharov/Project.hbm.xml"></mapping>
+        <mapping resource="hibernate/edu.anderson.zaharov/FeedBack.hbm.xml"></mapping>
     </session-factory>
 </hibernate-configuration>

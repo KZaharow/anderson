@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TeamDao {
 
-    void deleteById(long id);
+    void deleteById(int id);
 
     Team findById(int id);
 

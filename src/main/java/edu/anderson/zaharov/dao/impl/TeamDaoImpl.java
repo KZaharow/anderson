@@ -20,7 +20,7 @@ public class TeamDaoImpl extends AbstractDAO implements TeamDao {
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(int id) {
 
     }
 

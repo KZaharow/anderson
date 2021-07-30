@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Project {
 
-    private Long id;
+    private int id;
 
     private String name;
 
