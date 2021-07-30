@@ -32,7 +32,7 @@ public class AppCfg {
                             setName("myTest").
                             build();
         } catch (Exception e) {
-            log.error("Embedded DataSource bean cannot be created!", e);
+            log.error("DataSource bean cannot be created!", e);
             return null;
         }
     }
@@ -54,6 +54,7 @@ public class AppCfg {
     }
 
     @Bean public SessionFactory sessionFactory() throws IOException {
+
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan("edu.anderson.zaharov.spring_annotation");
@@ -63,6 +64,7 @@ public class AppCfg {
     }
 
     @Bean public PlatformTransactionManager transactionManager() throws IOException {
+
         return new HibernateTransactionManager(sessionFactory());
     }
 }

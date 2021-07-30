@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -17,17 +19,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NamedQueries({
         @NamedQuery(name = "Team.findById", query = "select distinct t from Team t where t.id = :id")
 })
-public class Team {
+public class Team implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @Column
-    private Long name;
+    @Column(name = "name")
+    private String name;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Employer> employers;
+    private Set<Employer> employers = new HashSet<>();
 
     public boolean addEmployer(Employer employer) {
 

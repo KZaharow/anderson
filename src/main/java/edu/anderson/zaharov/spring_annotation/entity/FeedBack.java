@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -17,7 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NamedQueries({
         @NamedQuery(name = "FeedBack.findById", query = "select distinct f from FeedBack f where f.id = :id")
 })
-public class FeedBack {
+public class FeedBack implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

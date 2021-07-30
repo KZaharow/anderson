@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -17,7 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NamedQueries({
         @NamedQuery(name = "Project.findById", query = "select distinct p from Project p where p.id = :id")
 })
-public class Project {
+public class Project implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

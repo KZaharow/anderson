@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -19,7 +20,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NamedQueries({
         @NamedQuery(name = "Employer.findById", query = "select distinct e from Employer e where e.id = :id")
 })
-public class Employer {
+public class Employer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -34,7 +35,7 @@ public class Employer {
     @Column
     private String patronymic;
 
-    @Column
+    @Column(name = "E_MAIL")
     private String eMail;
 
     @Column
@@ -47,16 +48,17 @@ public class Employer {
     @Column
     private int experience;
 
-    @Column
+    @Column(name = "EMPLOYMENT_DATA")
     @Temporal(TemporalType.DATE)
     private Date employmentDate;
 
-    @Column
+    @Column(name = "WORK_SKILL")
     private WorkSkill workSkill;
 
-    @Column
+    @Column(name = "ENGLISH_SKILL")
     private EnglishSkill englishSkill;
 
+    @Column
     private String skype;
 
     @OneToOne

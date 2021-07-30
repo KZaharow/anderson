@@ -11,6 +11,13 @@ CREATE TABLE feedback
     date timestamp
 );
 
+CREATE TABLE team
+(
+    id   bigint AUTO_INCREMENT
+        CONSTRAINT team primary key,
+    name text
+);
+
 CREATE TABLE employer
 (
     id              bigint AUTO_INCREMENT
@@ -18,7 +25,7 @@ CREATE TABLE employer
     name            text,
     surname         text,
     patronymic      text,
-    email           text,
+    mail           text,
     tel             text,
     birthday        timestamp,
     experience      integer,
@@ -27,7 +34,8 @@ CREATE TABLE employer
     english_skill   char(2),
     skype           text,
     feedback_id     integer,
-    project_id      integer
+    project_id      integer,
+    team_id         integer
 );
 
 CREATE TABLE project
@@ -41,18 +49,15 @@ CREATE TABLE project
     project_manager text
 );
 
-CREATE TABLE team
-(
-    id   bigint AUTO_INCREMENT
-        CONSTRAINT team primary key,
-    name text
-);
+
 
 
 ALTER TABLE employer
     ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project (id);
 ALTER TABLE employer
     ADD CONSTRAINT employer_feedback_id_fk FOREIGN KEY (feedback_id) REFERENCES feedback (id);
+ALTER TABLE employer
+    ADD CONSTRAINT employer_team_id_fk FOREIGN KEY (team_id) REFERENCES team (id);
 
 INSERT INTO feedback (text, date)
 VALUES ('Замечательно справился', '2021-01-01 12:00:01.000000');
@@ -69,21 +74,21 @@ VALUES ('Команда 1');
 INSERT INTO team (name)
 VALUES ('Команда 2');
 
-INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
-                      english_skill, skype, feedback_id, project_id)
+INSERT INTO employer (name, surname, patronymic, mail, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
 VALUES ('Иван', 'Иванов', 'Иванович', 'ivan@mail.ru', '(232)11-22-00', '1990-01-01 10:00:01.000000', 70,
-        '2018-01-10 10:00:01.000000', 'm1', 'B1', 'ivanSkype', 1, 1);
+        '2018-01-10 10:00:01.000000', 'm1', 'B1', 'ivanSkype', 1, 1, 1 );
 
-INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
-                      english_skill, skype, feedback_id, project_id)
+INSERT INTO employer (name, surname, patronymic, mail, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
 VALUES ('Олег', 'Олегов', 'Олегович', 'oleg@mail.ru', '(232)11-22-01', '1991-01-01 10:00:01.000000', 80,
-        '2019-01-10 10:00:01.000000', 'm2', 'B2', 'olegSkype', 1, 1);
-INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
-                      english_skill, skype, feedback_id, project_id)
+        '2019-01-10 10:00:01.000000', 'm2', 'B2', 'olegSkype', 1, 1, 1) ;
+INSERT INTO employer (name, surname, patronymic, mail, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
 VALUES ('Петр', 'Петров', 'Петрович', 'petr@mail.ru', '(232)11-22-02', '1992-02-02 10:00:01.000000', 90,
-        '2020-01-10 10:00:01.000000', 's1', 'C1', 'petrSkype', 1, 1);
+        '2020-01-10 10:00:01.000000', 's1', 'C1', 'petrSkype', 1, 1, 1) ;
 
-INSERT INTO employer (name, surname, patronymic, email, tel, birthday, experience, employment_data, work_skill,
-                      english_skill, skype, feedback_id, project_id)
+INSERT INTO employer (name, surname, patronymic, mail, tel, birthday, experience, employment_data, work_skill,
+                      english_skill, skype, feedback_id, project_id, team_id)
 VALUES ('Глеб', 'Глебов', 'Глебович', 'gleb@mail.ru', '(232)11-22-03', '1993-03-03 10:00:01.000000', 99,
-        '2020-02-10 10:00:01.000000', 's2', 'C2', 'glebSkype', 1, 1);
+        '2020-02-10 10:00:01.000000', 's2', 'C2', 'glebSkype', 1, 1, 1) ;
