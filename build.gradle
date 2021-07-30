@@ -50,6 +50,7 @@ dependencies {
 
     // HikariCP
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
+    implementation group: 'com.mchange', name: 'c3p0', version: '0.9.5.2'
 
     // sonar
     implementation group: 'org.sonarsource.scanner.maven', name: 'sonar-maven-plugin', version: '3.9.0.2155'

@@ -19,7 +19,7 @@ public class FeedBackDaoImpl implements FeedBackDao {
 
     @Override
     public long saveOrUpdateEntityById(FeedBack feedBack) {
-sessionFactory.getCurrentSession().
+
         sessionFactory.getCurrentSession().saveOrUpdate(feedBack);
         Long id = feedBack.getId();
         log.info(" ** --> Entity has been saved: {}", feedBack);

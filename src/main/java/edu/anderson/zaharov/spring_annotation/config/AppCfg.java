@@ -38,6 +38,7 @@ public class AppCfg {
     }
 
     private Properties hibernateProperties() {
+
         Properties hibernateProp = new Properties();
         hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         hibernateProp.put("hibernate.format_sql", true);
@@ -46,7 +47,9 @@ public class AppCfg {
         hibernateProp.put("hibernate.max_fetch_depth", 3);
         hibernateProp.put("hibernate.jdbc.batch_size", 10);
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
-        hibernateProp.put("hibernate.connection.provider_class", "com.zaxxer.hikari.hibernate.HikariConnectionProvider");
+        //hibernateProp.put("hibernate.connection.provider_class", "com.zaxxer.hikari.hibernate.HikariConnectionProvider");
+        //hibernate.connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+        //hibernateProp.put("hibernate.connection.provider_class", "org.hibernate.connection.C3P0ConnectionProvider");
         return hibernateProp;
     }
 
