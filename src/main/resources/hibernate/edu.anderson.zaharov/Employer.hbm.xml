@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="edu.anderson.zaharov.entity.Employer" table="EMPLOYER">
+    <class name="edu.anderson.zaharov.entity.Employer" table="employer">
         <meta attribute="class-description">
             This class contains the Employer details.
         </meta>
@@ -23,22 +23,22 @@
         </property>
 
         <property name="mail" type="string">
-            <column name="mail" length="30"/>
+            <column name="e_mail" length="30"/>
         </property>
 
         <property name="tel" type="string">
             <column name="tel" length="30"/>
         </property>
 
-        <property name="birthday" type="string">
+        <property name="birthday" type="timestamp">
             <column name="birthday" length="30"/>
         </property>
 
-        <property name="experience" type="string">
-            <column name="experience" length="30"/>
+        <property name="experience" type="int">
+            <column name="experience"/>
         </property>
 
-        <property name="employmentDate" type="string">
+        <property name="employmentDate" type="timestamp">
             <column name="employment_data" length="30"/>
         </property>
 
@@ -54,16 +54,16 @@
             <column name="skype" length="30"/>
         </property>
 
-        <property name="feedbackId" type="string">
-            <column name="feedback_id" length="30"/>
+        <property name="feedbackId" type="int">
+            <column name="feedback_id"/>
         </property>
 
-        <property name="projectId" type="string">
-            <column name="project_id" length="30"/>
+        <property name="projectId" type="int">
+            <column name="project_id"/>
         </property>
 
-        <property name="teamId" type="string">
-            <column name="team_id" length="30"/>
+        <property name="teamId" type="int">
+            <column name="team_id"/>
         </property>
     </class>
 </hibernate-mapping>

@@ -5,6 +5,7 @@ import edu.anderson.zaharov.dao.EmployerDao;
 import edu.anderson.zaharov.entity.Company;
 import edu.anderson.zaharov.entity.Employer;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,9 +27,10 @@ public class EmployerDaoImpl extends AbstractDAO implements EmployerDao {
     }
 
     @Override
+    @Transactional
     public List<Employer> findAll() {
 
-        return (List<Employer>) getSession().createCriteria(Company.class).list();
+        return (List<Employer>) getSession().createCriteria(Employer.class).list();
     }
 
     @Override

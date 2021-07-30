@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Temporal;
 import java.util.Date;
 
 @Data
@@ -14,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Employer {
 
-    private Long id;
+    private int id;
 
     private String name;
 
@@ -32,9 +33,9 @@ public class Employer {
 
     private Date employmentDate;
 
-    private WorkSkill workSkill;
+    private String workSkill;
 
-    private EnglishSkill englishSkill;
+    private String englishSkill;
 
     private String skype;
 

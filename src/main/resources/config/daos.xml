@@ -4,7 +4,7 @@
         http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="companyDAO" class="edu.anderson.zaharov.dao.impl.CompanyDAOImpl">
+    <bean id="employerDAO" class="edu.anderson.zaharov.dao.impl.EmployerDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 

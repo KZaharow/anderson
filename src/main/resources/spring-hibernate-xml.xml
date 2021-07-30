@@ -9,9 +9,9 @@
         </property>
     </bean>
 
-    <import resource="config/datasource.xml" />
-    <import resource="config/hibernate.xml" />
-    <import resource="config/transaction.xml" />
-    <import resource="config/daos.xml" />
+    <import resource="config/datasource.xml"/>
+    <import resource="config/hibernate.xml"/>
+    <import resource="config/transaction.xml"/>
+    <import resource="config/daos.xml"/>
 
 </beans>
