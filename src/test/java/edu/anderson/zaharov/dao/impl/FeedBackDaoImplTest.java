@@ -11,8 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 class FeedBackDaoImplTest {
@@ -49,7 +48,7 @@ class FeedBackDaoImplTest {
 
         List<FeedBack> feedBacks = feedBackDAO.findAll();
         log.info(feedBacks.toString());
-        assertNotNull(feedBacks.size());
+        assertTrue(feedBacks.size() > 0);
     }
 
     @Test

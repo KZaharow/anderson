@@ -2,6 +2,7 @@ package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.EmployerDao;
 import edu.anderson.zaharov.entity.Employer;
+import edu.anderson.zaharov.entity.FeedBack;
 import edu.anderson.zaharov.entity.Team;
 import edu.anderson.zaharov.enumeration.EnglishSkill;
 import edu.anderson.zaharov.enumeration.WorkSkill;
@@ -38,8 +39,9 @@ class EmployerDaoImplTest {
     @Test
     void deleteById() {
 
-        int sizeBefore = employerDao.findAll().size();
-        employerDao.deleteById(employerDao.findAll().size());
+        List<Employer> employers = employerDao.findAll();
+        int sizeBefore = employers.size();
+        employerDao.deleteById(employers.get(employers.size() - 1).getId());
         int sizeAfter = employerDao.findAll().size();
         assertEquals(1, sizeBefore - sizeAfter);
     }
@@ -57,7 +59,7 @@ class EmployerDaoImplTest {
 
         List<Employer> employers = employerDao.findAll();
         log.info(employers.toString());
-        assertNotNull(employers.size());
+        assertTrue(employers.size() > 0);
     }
 
     @Test

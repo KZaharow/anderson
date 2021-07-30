@@ -4,6 +4,7 @@ import edu.anderson.zaharov.dao.AbstractDAO;
 import edu.anderson.zaharov.dao.TeamDao;
 import edu.anderson.zaharov.entity.Employer;
 import edu.anderson.zaharov.entity.Team;
+import edu.anderson.zaharov.entity.Team;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Transactional
 public class TeamDaoImpl extends AbstractDAO implements TeamDao {
-
+    
     public void setSessionFactory(SessionFactory sessionFactory) {
 
         super.setSessionFactory(sessionFactory);
@@ -22,6 +23,7 @@ public class TeamDaoImpl extends AbstractDAO implements TeamDao {
     @Override
     public void deleteById(int id) {
 
+        getSession().delete(findById(id));
     }
 
     @Override
@@ -39,12 +41,15 @@ public class TeamDaoImpl extends AbstractDAO implements TeamDao {
     }
 
     @Override
-    public void insert(Team employer) {
+    public int insert(Team team) {
 
+        getSession().save(team);
+        return team.getId();
     }
 
     @Override
-    public void update(Team employer) {
+    public void update(Team team) {
 
+        getSession().saveOrUpdate(team);
     }
 }

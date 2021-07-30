@@ -13,7 +13,7 @@ public interface TeamDao {
 
     List<Team> findAll();
 
-    void insert(Team team);
+    int insert(Team team);
 
     void update(Team team);
 }
