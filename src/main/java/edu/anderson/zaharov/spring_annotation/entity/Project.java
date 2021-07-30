@@ -14,6 +14,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "project")
+@NamedQueries({
+        @NamedQuery(name = "Project.findById", query = "select distinct p from Project p where p.id = :id")
+})
 public class Project {
 
     @Id
@@ -26,15 +29,12 @@ public class Project {
     @Column
     private String costumer;
 
-    @Column
+    @Column(name = "FINISH_DATE")
     private Date finishDate;
 
     @Column
     private String methodology;
 
-    @Column
+    @Column(name = "PROJECT_MANAGER")
     private String projectManager;
-
-    @OneToOne(mappedBy = "project")
-    private Employer employer;
 }

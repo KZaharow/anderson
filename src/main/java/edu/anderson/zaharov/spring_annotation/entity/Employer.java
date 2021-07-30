@@ -16,6 +16,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "employer")
+@NamedQueries({
+        @NamedQuery(name = "Employer.findById", query = "select distinct e from Employer e where e.id = :id")
+})
 public class Employer {
 
     @Id

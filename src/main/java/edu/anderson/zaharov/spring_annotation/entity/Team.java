@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -15,6 +14,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "team")
+@NamedQueries({
+        @NamedQuery(name = "Team.findById", query = "select distinct t from Team t where t.id = :id")
+})
 public class Team {
 
     @Id
@@ -22,8 +24,14 @@ public class Team {
     private Long id;
 
     @Column
-    private Long teamNameId;
+    private Long name;
 
-    @OneToMany(mappedBy = "team", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Employer> employers;
+
+    public boolean addEmployer(Employer employer) {
+
+        employer.setTeam(this);
+        return getEmployers().add(employer);
+    }
 }

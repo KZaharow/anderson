@@ -1,12 +1,12 @@
 package edu.anderson.zaharov.spring_annotation.repository;
 
-import edu.anderson.zaharov.spring_annotation.entity.TeamName;
+import edu.anderson.zaharov.spring_annotation.entity.Project;
 
 public interface ProjectDao {
 
-    long saveOrUpdateEntityById(TeamName teamName);
+    long saveOrUpdateEntityById(Project project);
 
-    TeamName findEntityById(long id);
+    Project findEntityById(long id);
 
-    void deleteEntityByName(TeamName teamName);
+    void deleteEntityByName(Project project);
 }
