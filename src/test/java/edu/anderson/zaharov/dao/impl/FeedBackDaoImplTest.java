@@ -2,8 +2,6 @@ package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.FeedBackDao;
 import edu.anderson.zaharov.entity.FeedBack;
-import edu.anderson.zaharov.enumeration.EnglishSkill;
-import edu.anderson.zaharov.enumeration.WorkSkill;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,14 +27,11 @@ class FeedBackDaoImplTest {
     }
 
     @Test
-    void setSessionFactory() {
-    }
-
-    @Test
     void deleteById() {
 
-        int sizeBefore = feedBackDAO.findAll().size();
-        feedBackDAO.deleteById(feedBackDAO.findAll().size());
+        List<FeedBack> feedBacks = feedBackDAO.findAll();
+        int sizeBefore = feedBacks.size();
+        feedBackDAO.deleteById(feedBacks.get(feedBacks.size() - 1).getId());
         int sizeAfter = feedBackDAO.findAll().size();
         assertEquals(1, sizeBefore - sizeAfter);
     }
