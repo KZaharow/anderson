@@ -3,6 +3,7 @@ package edu.anderson.zaharov.dao.impl;
 import edu.anderson.zaharov.dao.AbstractDAO;
 import edu.anderson.zaharov.dao.CompanyDAO;
 import edu.anderson.zaharov.entity.Company;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -10,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 
 public class CompanyDAOImpl extends AbstractDAO implements CompanyDAO {
 

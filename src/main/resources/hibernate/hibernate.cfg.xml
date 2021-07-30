@@ -17,7 +17,7 @@
         <property name="format_sql">false</property>
 
         <mapping resource="hibernate/edu.anderson.zaharov/Company.hbm.xml"></mapping>
-        <!--<mapping resource="hibernate/org/dohbedoh/model/Address.hbm.xml"></mapping>-->
+        <mapping resource="hibernate/edu.anderson.zaharov/Employer.hbm.xml"></mapping>
         <!--<mapping resource="hibernate/org/dohbedoh/model/Contact.hbm.xml"></mapping>-->
         <!--<mapping resource="hibernate/org/dohbedoh/model/Contract.hbm.xml"></mapping>-->
         <!--<mapping resource="hibernate/org/dohbedoh/model/Employee.hbm.xml"></mapping>-->

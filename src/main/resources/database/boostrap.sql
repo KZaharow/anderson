@@ -1,92 +1,92 @@
-DROP TABLE IF EXISTS team;
-DROP TABLE IF EXISTS employer;
-DROP TABLE IF EXISTS project;
-DROP TABLE IF EXISTS feedback;
+DROP TABLE IF EXISTS FEEDBACK CASCADE;
+DROP TABLE IF EXISTS TEAM CASCADE;
+DROP TABLE IF EXISTS PROJECT CASCADE;
+DROP TABLE IF EXISTS EMPLOYER CASCADE;
 
-CREATE TABLE employer
+CREATE TABLE EMPLOYER
 (
-    id              SERIAL PRIMARY KEY NOT NULL,
-    name            varchar(30),
-    surname         varchar(30),
-    patronymic      varchar(30),
-    e_mail          varchar(30),
-    tel             varchar(30),
-    birthday        timestamp,
-    experience      integer,
-    employment_data timestamp,
-    work_skill      char(2),
-    english_skill   char(2),
-    skype           varchar(30),
-    project_id      integer,
-    feedback_id     integer,
-    team_id         integer
+    ID              SERIAL PRIMARY KEY,
+    NAME            TEXT,
+    SURNAME         TEXT,
+    PATRONYMIC      TEXT,
+    MAIL            TEXT,
+    TEL             TEXT,
+    BIRTHDAY        TIMESTAMP,
+    EXPERIENCE      INT,
+    EMPLOYMENT_DATA TIMESTAMP,
+    WORK_SKILL      CHAR(2),
+    ENGLISH_SKILL   CHAR(2),
+    SKYPE           TEXT,
+    FEEDBACK_ID     INT
 );
 
-CREATE TABLE feedback
+CREATE TABLE FEEDBACK
 (
-    id   SERIAL PRIMARY KEY NOT NULL,
-    text varchar(30),
-    date timestamp
+    ID   SERIAL PRIMARY KEY,
+    TEXT TEXT,
+    DATE TIMESTAMP
 );
 
-CREATE TABLE project
+CREATE TABLE TEAM
 (
-    id              SERIAL PRIMARY KEY NOT NULL,
-    name            varchar(30),
-    costumer        varchar(30),
-    finish_date     timestamp,
-    methodology     varchar(30),
-    project_manager varchar(30),
-    team_name_id    integer
+    ID           SERIAL PRIMARY KEY,
+    TEAM_NAME_ID INT,
+    EMPLOYER_ID  INT
 );
 
-CREATE TABLE team
+CREATE TABLE TEAM_NAME
 (
-    id           SERIAL PRIMARY KEY NOT NULL,
-    team_name_id integer,
-    employer_id  integer
+    ID   SERIAL PRIMARY KEY NOT NULL,
+    NAME TEXT
 );
 
+CREATE TABLE PROJECT
+(
+    ID              SERIAL PRIMARY KEY NOT NULL,
+    NAME            TEXT,
+    COSTUMER        TEXT,
+    FINISH_DATE     TIMESTAMP,
+    METHODOLOGY     TEXT,
+    PROJECT_MANAGER TEXT,
+    TEAM_NAME_ID    INT
+);
 
-/*ALTER TABLE employer ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project(id);
-ALTER TABLE employer ADD CONSTRAINT employer_feedback_id_fk FOREIGN KEY (feedback_id) REFERENCES feedback(id);
-ALTER TABLE project ADD CONSTRAINT project_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id);
-ALTER TABLE team ADD CONSTRAINT team_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name(id) ;
-ALTER TABLE team ADD CONSTRAINT team_employer_id_fk FOREIGN KEY (employer_id) REFERENCES employer(id);*/
+ALTER TABLE EMPLOYER
+    ADD CONSTRAINT EMPLOYER_PROJECT_ID_FK FOREIGN KEY (PROJECT_ID) REFERENCES PROJECT (ID);
+ALTER TABLE EMPLOYER
+    ADD CONSTRAINT EMPLOYER_FEEDBACK_ID_FK FOREIGN KEY (FEEDBACK_ID) REFERENCES FEEDBACK (ID);
+ALTER TABLE TEAM
+    ADD CONSTRAINT TEAM_EMPLOYER_ID_FK FOREIGN KEY (EMPLOYER_ID) REFERENCES EMPLOYER (ID);
+ALTER TABLE TEAM
+    ADD CONSTRAINT TEAM_TEAM_NAME_ID_FK FOREIGN KEY (TEAM_NAME_ID) REFERENCES TEAM_NAME (ID);
+ALTER TABLE PROJECT
+    ADD CONSTRAINT PROJECT_TEAM_NAME_ID_FK FOREIGN KEY (TEAM_NAME_ID) REFERENCES TEAM_NAME (ID);
 
-INSERT INTO feedback (id, text, date)
-VALUES (1, 'Замечательно справился', '2021-01-01 12:00:01.000000');
-INSERT INTO feedback (id, text, date)
-VALUES (2, 'Успешно, хотим еще', '2021-02-02 10:00:01.000000');
+INSERT INTO TEAM_NAME (NAME)
+VALUES ('Команда А'),
+       ('Команда Б');
 
-INSERT INTO project (id, name, costumer, finish_date, methodology, project_manager, team_name_id)
-VALUES (1, 'iPay', 'BelBank', '2021-12-31 10:00:01.000000', 'Spring boot', 'MANAGER_1', 1);
-INSERT INTO project (id, name, costumer, finish_date, methodology, project_manager, team_name_id)
-VALUES (2, 'qBank', 'ExtBank', '2021-12-31 10:00:01.000000', 'Spring boot', 'MANAGER_2', 2);
+INSERT INTO FEEDBACK (TEXT, DATE)
+VALUES ('Замечательно справился', '2021-01-01 12:00:01.000000'),
+       ('Успешно, хотим еще', '2021-02-02 10:00:01.000000');
 
-INSERT INTO employer (name, surname, patronymic, e_mail, tel, birthday, experience, employment_data, work_skill,
-                      english_skill, skype, project_id, feedback_id, team_id)
+INSERT INTO PROJECT (NAME, COSTUMER, FINISH_DATE, METHODOLOGY, PROJECT_MANAGER, TEAM_NAME_ID)
+VALUES ('iPay', 'BelBank', '2021-12-31 10:00:01.000000', 'Spring boot', 'MANAGER_1', 1),
+       ('qBank', 'ExtBank', '2021-12-31 10:00:01.000000', 'Spring boot', 'MANAGER_2', 2);
+
+INSERT INTO EMPLOYER(NAME, SURNAME, PATRONYMIC, MAIL, TEL, BIRTHDAY, EXPERIENCE, EMPLOYMENT_DATA, PROJECT_ID,
+                     WORK_SKILL, ENGLISH_SKILL, SKYPE, FEEDBACK_ID)
 VALUES ('Иван', 'Иванов', 'Иванович', 'ivan@mail.ru', '(232)11-22-00', '1990-01-01 10:00:01.000000', 70,
-        '2018-01-10 10:00:01.000000', 'm1', 'B1', 'ivanSkype', 1, 1, 1);
-INSERT INTO employer (name, surname, patronymic, e_mail, tel, birthday, experience, employment_data, work_skill,
-                      english_skill, skype, project_id, feedback_id, team_id)
-VALUES ('Олег', 'Олегов', 'Олегович', 'oleg@mail.ru', '(232)11-22-01', '1991-01-01 10:00:01.000000', 80,
-        '2019-01-10 10:00:01.000000', 'm2', 'B2', 'olegSkype', 2, 1, 1);
-INSERT INTO employer (name, surname, patronymic, e_mail, tel, birthday, experience, employment_data,
-                      work_skill, english_skill, skype, project_id, feedback_id, team_id)
-VALUES ('Петр', 'Петров', 'Петрович', 'petr@mail.ru', '(232)11-22-02', '1992-02-02 10:00:01.000000', 90,
-        '2020-01-10 10:00:01.000000', 's1', 'C1', 'petrSkype', 1, 1, 1);
+        '2018-01-10 10:00:01.000000', 1, 'm1', 'B1', 'ivanSkype', 1),
+       ('Олег', 'Олегов', 'Олегович', 'oleg@mail.ru', '(232)11-22-01', '1991-01-01 10:00:01.000000', 80,
+        '2019-01-10 10:00:01.000000', 1, 'm2', 'B2', 'olegSkype', 2),
+       ('Петр', 'Петров', 'Петрович', 'petr@mail.ru', '(232)11-22-02', '1992-02-02 10:00:01.000000', 90,
+        '2020-01-10 10:00:01.000000', 1, 's1', 'C1', 'petrSkype', 1),
+       ('Глеб', 'Глебов', 'Глебович', 'gleb@mail.ru', '(232)11-22-03', '1993-03-03 10:00:01.000000', 99,
+        '2020-02-10 10:00:01.000000', 1, 's2', 'C2', 'glebSkype', 2);
 
-INSERT INTO employer (name, surname, patronymic, e_mail, tel, birthday, experience, employment_data,
-                      work_skill, english_skill, skype, project_id, feedback_id, team_id)
-VALUES ('Глеб', 'Глебов', 'Глебович', 'gleb@mail.ru', '(232)11-22-03', '1993-03-03 10:00:01.000000', 99,
-        '2020-02-10 10:00:01.000000', 's2', 'C2', 'glebSkype', 2, 1, 1);
-
-INSERT INTO team (team_name_id, employer_id)
-VALUES (1, 1);
-INSERT INTO team (team_name_id, employer_id)
-VALUES (1, 3);
-INSERT INTO team (team_name_id, employer_id)
-VALUES (2, 2);
-INSERT INTO team (team_name_id, employer_id)
-VALUES (2, 4);
+INSERT INTO TEAM (TEAM_NAME_ID, EMPLOYER_ID)
+VALUES (1, 1),
+       (1, 3),
+       (2, 2),
+       (2, 4);
