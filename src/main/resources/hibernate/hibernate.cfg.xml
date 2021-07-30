@@ -17,5 +17,6 @@
         <property name="format_sql">false</property>
 
         <mapping resource="hibernate/edu.anderson.zaharov/Employer.hbm.xml"></mapping>
+        <mapping resource="hibernate/edu.anderson.zaharov/Team.hbm.xml"></mapping>
     </session-factory>
 </hibernate-configuration>

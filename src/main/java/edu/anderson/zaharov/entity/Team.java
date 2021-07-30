@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Team {
 
-    private Long id;
+    private int id;
 
-    private Long teamNameId;
-
-    private Long employerId;
+    private String name;
 }

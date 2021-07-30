@@ -41,9 +41,8 @@ CREATE TABLE project
 
 CREATE TABLE team
 (
-    id           SERIAL PRIMARY KEY NOT NULL,
-    team_name_id integer,
-    employer_id  integer
+    id   SERIAL PRIMARY KEY NOT NULL,
+    name varchar(30)
 );
 /*
 
@@ -79,7 +78,7 @@ INSERT INTO employer (name, surname, patronymic, e_mail, tel, birthday, experien
 VALUES ('Глеб', 'Глебов', 'Глебович', 'gleb@mail.ru', '(232)11-22-03', '1993-03-03 10:00:01.000000', 99,
         '2020-02-10 10:00:01.000000', 's2', 'C2', 'glebSkype', 2, 2, 2);
 
-INSERT INTO team (team_name_id, employer_id)
-VALUES (1, 1);
-INSERT INTO team (team_name_id, employer_id)
-VALUES (1, 3);
+INSERT INTO team (name)
+VALUES ('команда а');
+INSERT INTO team (name)
+VALUES ('команда б');

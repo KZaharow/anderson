@@ -9,11 +9,11 @@ public interface EmployerDao {
 
     void deleteById(long id);
 
-    Employer findById(String name);
+    Employer findById(int id);
 
     List<Employer> findAll();
 
-    void insert(Employer employer);
+    int insert(Employer employer);
 
     void update(Employer employer);
 }
