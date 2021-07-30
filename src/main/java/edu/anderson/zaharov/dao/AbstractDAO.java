@@ -13,12 +13,4 @@ public abstract class AbstractDAO {
     }
 
     protected void setSessionFactory(SessionFactory sessionFactory) {this.sessionFactory = sessionFactory; }
-
-    public void persist(Object entity) {
-        getSession().persist(entity);
-    }
-
-    public void delete(Object entity) {
-        getSession().delete(entity);
-    }
 }

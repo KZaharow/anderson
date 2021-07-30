@@ -11,10 +11,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 class ProjectDaoImplTest {
+
     private static ProjectDao projectDAO;
 
     @BeforeAll
@@ -74,5 +76,4 @@ class ProjectDaoImplTest {
         projectDAO.update(project);
         assertEquals("ops", projectDAO.findById(1).getName());
     }
-
 }

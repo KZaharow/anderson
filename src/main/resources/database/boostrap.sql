@@ -54,19 +54,6 @@ create sequence sq1 start 3 increment 1;
 create sequence sq2 start 3 increment 1;
 create sequence sq3 start 3 increment 1;
 create sequence sq4 start 3 increment 1;
-/*
-
-ALTER TABLE employer
-    ADD CONSTRAINT employer_project_id_fk FOREIGN KEY (project_id) REFERENCES project (id);
-ALTER TABLE employer
-    ADD CONSTRAINT employer_feedback_id_fk FOREIGN KEY (feedback_id) REFERENCES feedback (id);
-ALTER TABLE project
-    ADD CONSTRAINT project_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name (id);
-ALTER TABLE team
-    ADD CONSTRAINT team_team_name_id_fk FOREIGN KEY (team_name_id) REFERENCES team_name (id);
-ALTER TABLE team
-    ADD CONSTRAINT team_employer_id_fk FOREIGN KEY (employer_id) REFERENCES employer (id);
-*/
 
 INSERT INTO feedback (text, date)
 VALUES ('Замечательно справился', '2021-01-01 12:00:01.000000');

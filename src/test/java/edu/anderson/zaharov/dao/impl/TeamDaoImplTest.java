@@ -1,9 +1,6 @@
 package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.TeamDao;
-import edu.anderson.zaharov.dao.TeamDao;
-import edu.anderson.zaharov.dao.TeamDao;
-import edu.anderson.zaharov.entity.Team;
 import edu.anderson.zaharov.entity.Team;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,14 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 class TeamDaoImplTest {
-
 
     private static TeamDao teamDAO;
 
@@ -75,5 +71,4 @@ class TeamDaoImplTest {
         teamDAO.update(team);
         assertEquals("ops", teamDAO.findById(1).getName());
     }
-
 }

@@ -2,23 +2,19 @@ package edu.anderson.zaharov.dao.impl;
 
 import edu.anderson.zaharov.dao.EmployerDao;
 import edu.anderson.zaharov.entity.Employer;
-import edu.anderson.zaharov.entity.FeedBack;
-import edu.anderson.zaharov.entity.Team;
 import edu.anderson.zaharov.enumeration.EnglishSkill;
 import edu.anderson.zaharov.enumeration.WorkSkill;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 class EmployerDaoImplTest {
@@ -30,10 +26,6 @@ class EmployerDaoImplTest {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-hibernate-xml.xml");
         employerDao = (EmployerDao) context.getBean("employerDAO");
-    }
-
-    @Test
-    void setSessionFactory() {
     }
 
     @Test

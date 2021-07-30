@@ -1,13 +1,10 @@
 package edu.anderson.zaharov.entity;
 
 
-import edu.anderson.zaharov.enumeration.EnglishSkill;
-import edu.anderson.zaharov.enumeration.WorkSkill;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Temporal;
 import java.util.Date;
 
 @Data
