@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="edu.anderson.zaharov.entity.FeedBack" table="feedback">
+        <meta attribute="class-description">
+            This class contains the feedback details.
+        </meta>
+        <id name="id" type="int">
+            <column name="id" precision="5" scale="0"/>
+            <generator class="sequence">
+                <param name="sequence">sq4</param>
+            </generator>
+        </id>
+
+        <property name="text" type="string">
+            <column name="text" length="30"/>
+        </property>
+
+        <property name="date" type="timestamp">
+            <column name="date" length="30"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

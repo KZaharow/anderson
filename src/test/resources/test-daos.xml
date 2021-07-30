@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="employerDAO" class="edu.anderson.zaharov.dao.impl.EmployerDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="teamDAO" class="edu.anderson.zaharov.dao.impl.TeamDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="projectDAO" class="edu.anderson.zaharov.dao.impl.ProjectDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="feedBackDAO" class="edu.anderson.zaharov.dao.impl.FeedBackDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+</beans>

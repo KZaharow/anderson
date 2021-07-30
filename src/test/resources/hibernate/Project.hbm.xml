@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="edu.anderson.zaharov.entity.Project" table="project">
+        <meta attribute="class-description">
+            This class contains the Team details.
+        </meta>
+        <id name="id" type="int">
+            <column name="id" precision="5" scale="0"/>
+            <generator class="sequence">
+                <param name="sequence">sq3</param>
+            </generator>
+        </id>
+
+        <property name="name" type="string">
+            <column name="name" length="30"/>
+        </property>
+
+        <property name="costumer" type="string">
+            <column name="costumer" length="30"/>
+        </property>
+
+        <property name="finishDate" type="timestamp">
+            <column name="finish_date" length="30"/>
+        </property>
+
+        <property name="methodology" type="string">
+            <column name="methodology" length="30"/>
+        </property>
+
+        <property name="projectManager" type="string">
+            <column name="project_manager" length="30"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

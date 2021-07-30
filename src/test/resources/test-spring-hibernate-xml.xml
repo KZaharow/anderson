@@ -5,13 +5,13 @@
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
-            <value>database/database.properties</value>
+            <value>test-database.properties</value>
         </property>
     </bean>
 
-    <import resource="config/datasource.xml"/>
-    <import resource="config/hibernate.xml"/>
-    <import resource="config/transaction.xml"/>
-    <import resource="config/daos.xml"/>
+    <import resource="test-datasource.xml"/>
+    <import resource="test-hibernate.xml"/>
+    <import resource="test-transaction.xml"/>
+    <import resource="test-daos.xml"/>
 
 </beans>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="edu.anderson.zaharov.entity.Employer" table="employer">
+        <meta attribute="class-description">
+            This class contains the Employer details.
+        </meta>
+        <id name="id" type="int">
+            <column name="id" precision="5" scale="0"/>
+            <generator class="sequence">
+                <param name="sequence">sq1</param>
+            </generator>
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="30"/>
+        </property>
+
+        <property name="surName" type="string">
+            <column name="surname" length="30"/>
+        </property>
+
+        <property name="patronymic" type="string">
+            <column name="patronymic" length="30"/>
+        </property>
+
+        <property name="mail" type="string">
+            <column name="e_mail" length="30"/>
+        </property>
+
+        <property name="tel" type="string">
+            <column name="tel" length="30"/>
+        </property>
+
+        <property name="birthday" type="timestamp">
+            <column name="birthday" length="30"/>
+        </property>
+
+        <property name="experience" type="int">
+            <column name="experience"/>
+        </property>
+
+        <property name="employmentDate" type="timestamp">
+            <column name="employment_data" length="30"/>
+        </property>
+
+        <property name="workSkill" type="string">
+            <column name="work_skill" length="30"/>
+        </property>
+
+        <property name="englishSkill" type="string">
+            <column name="english_skill" length="30"/>
+        </property>
+
+        <property name="skype" type="string">
+            <column name="skype" length="30"/>
+        </property>
+
+        <property name="feedbackId" type="int">
+            <column name="feedback_id"/>
+        </property>
+
+        <property name="projectId" type="int">
+            <column name="project_id"/>
+        </property>
+
+        <property name="teamId" type="int">
+            <column name="team_id"/>
+        </property>
+    </class>
+</hibernate-mapping>
